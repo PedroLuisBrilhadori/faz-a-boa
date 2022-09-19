@@ -19,7 +19,7 @@ class _ConfigDrawerState extends State<ConfigDrawer> {
     ConfigOption(
         "Notificações", Colors.black, Icons.chat_bubble_outlined, () => {}),
     ConfigOption('GPS', Colors.black, Icons.gps_fixed_outlined, () => {}),
-    ConfigOption('Sobre', Colors.black, Icons.person_rounded, () => {}),
+    ConfigOption('Sobre', Colors.black, Icons.info_outline, () => {}),
     ConfigOption('Sair', Colors.red, Icons.exit_to_app_outlined, () => {}),
   ];
 
