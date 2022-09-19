@@ -16,20 +16,20 @@ class CardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-                margin: const EdgeInsets.all(5),
+                margin: const EdgeInsets.fromLTRB(5, 5, 10, 5),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [Text('foto'), Text('avaliação')],
                 )),
-            Container(
+            Expanded(
+                child: Container(
               margin: const EdgeInsets.all(5),
               child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [Text('nome do posto'), Text('endereço')],
                   ),
                   Column(
@@ -38,7 +38,7 @@ class CardWidget extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            )),
           ],
         ),
       ),
