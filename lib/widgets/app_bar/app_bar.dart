@@ -4,7 +4,9 @@ import 'package:faz_a_boa/widgets/app_bar/app_bar_icon.dart';
 import 'package:flutter/material.dart';
 
 class FZBAppBar extends StatefulWidget {
-  const FZBAppBar({Key? key}) : super(key: key);
+  final String title;
+
+  const FZBAppBar(this.title, {Key? key}) : super(key: key);
 
   @override
   State<FZBAppBar> createState() => _FZBAppBarState();
@@ -36,7 +38,7 @@ class _FZBAppBarState extends State<FZBAppBar> {
                   onPressed: () {},
                 )),
             Text(
-              'Postos',
+              widget.title,
             ),
             AppBarIconWidget(
               BorderRadius.only(

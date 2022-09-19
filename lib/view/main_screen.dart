@@ -15,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FZBAppBar(),
+      body: FZBAppBar("Postos"),
       bottomNavigationBar: FZBNavigationBar(),
     );
   }
