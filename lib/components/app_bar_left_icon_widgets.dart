@@ -14,13 +14,13 @@ class _AppBarIconWidgetState extends State<AppBarIconWidget> {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(
-            top: 10.0,
-            bottom: 10.0), //não tem como dar margin left < é uma action :(
+            top: 17.0,
+            bottom: 17.0),
         decoration: BoxDecoration(
           color: Color.fromRGBO(25, 118, 210, 1),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(12.0),
-            bottomLeft: Radius.circular(12.0),
+            topRight: Radius.circular(12.0),
+            bottomRight: Radius.circular(12.0),
           ),
           // ignore: prefer_const_literals_to_create_immutables
           boxShadow: [
@@ -32,8 +32,7 @@ class _AppBarIconWidgetState extends State<AppBarIconWidget> {
           ],
         ),
         child: IconButton(
-          //padding?
-          icon: Icon(Icons.settings_outlined),
+          icon: Icon(Icons.home_outlined),
           color: Colors.white,
           onPressed: () {},
         ));

@@ -15,8 +15,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: 
-      backgroundColor: Colors.white, //acho q vai ter que fzr uma appbar ao invés de widget dela
       body: FZBAppBar(),
       bottomNavigationBar: FZBNavigationBar(),
     );
