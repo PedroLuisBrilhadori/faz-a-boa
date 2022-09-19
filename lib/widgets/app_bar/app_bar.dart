@@ -39,6 +39,10 @@ class _FZBAppBarState extends State<FZBAppBar> {
                 )),
             Text(
               widget.title,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             AppBarIconWidget(
               BorderRadius.only(
