@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
+import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:faz_a_boa/components/navigation_bar.dart';
-import 'package:faz_a_boa/components/app_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
