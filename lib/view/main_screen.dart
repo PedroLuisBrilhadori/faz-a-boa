@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
-import 'package:faz_a_boa/widgets/card/card.dart';
-import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/drawer/config_drawer.dart';
+import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
+import 'package:faz_a_boa/widgets/card/card.dart';
+import 'package:faz_a_boa/widgets/card/model/card_data.dart';
+import 'package:faz_a_boa/widgets/drawer/config_drawer.dart';
+import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -13,6 +14,10 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
+List<CardData> stations = [
+  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.5, 11)
+];
 
 class _MainScreenState extends State<MainScreen> {
   @override
@@ -22,12 +27,20 @@ class _MainScreenState extends State<MainScreen> {
         FZBAppBar('Postos'),
         Expanded(
             child: ListView(
-          children: const [
-            CardWidget(),
-            CardWidget(),
-            CardWidget(),
-            CardWidget(),
-            CardWidget(),
+          children: [
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
+            CardWidget(stations[0]),
           ],
         )),
       ]),

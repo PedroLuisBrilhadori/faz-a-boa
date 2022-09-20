@@ -1,44 +1,29 @@
-import 'package:faz_a_boa/main.dart';
+import 'package:faz_a_boa/widgets/card/card_info.dart';
+import 'package:faz_a_boa/widgets/card/model/card_data.dart';
+import 'package:faz_a_boa/widgets/card/photo_rate.dart';
 import 'package:flutter/material.dart';
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({Key? key}) : super(key: key);
+  final CardData cardData;
+
+  const CardWidget(this.cardData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 110,
       margin: const EdgeInsets.all(10),
       child: Card(
         elevation: 5,
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(color: Colors.white70, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Row(
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-                margin: const EdgeInsets.fromLTRB(5, 5, 10, 5),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [Text('foto'), Text('avaliação')],
-                )),
-            Expanded(
-                child: Container(
-              margin: const EdgeInsets.all(5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [Text('nome do posto'), Text('endereço')],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [Text('10km')],
-                  )
-                ],
-              ),
-            )),
+            PhotoRateWidget(cardData.rate, cardData.image),
+            CardInfo(cardData.title, cardData.address, cardData.distance),
           ],
         ),
       ),
