@@ -17,8 +17,8 @@ class MainScreen extends StatefulWidget {
 
 List<CardData> stations = [
   CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.0, 11),
-  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 5, 10),
-  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 2, 6),
+  CardData('Posto Shell', 'R. 2341', 'lib/assets/shell.png', 5, 10),
+  CardData('Posto Juninho', 'R. 1111', 'lib/assets/juninho.png', 3, 6),
   CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 1, 5),
   CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 3, 3),
 ];
