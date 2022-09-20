@@ -1,4 +1,4 @@
-import 'package:faz_a_boa/widgets/drawer/model/config_options.dart';
+import 'package:faz_a_boa/widgets/drawer/model/config_options.model.dart';
 import 'package:flutter/material.dart';
 
 class ConfigDrawer extends StatefulWidget {
