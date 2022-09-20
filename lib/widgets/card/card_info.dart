@@ -12,22 +12,51 @@ class CardInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.all(5),
+        margin: const EdgeInsets.fromLTRB(5, 10, 10, 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(title), Text(address)],
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto'),
+                ),
+                Text(
+                  address,
+                  style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.black87,
+                      fontFamily: 'Roboto'),
+                )
+              ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [Text("${distance}km")],
+              children: [
+                Text(
+                  "${distance}km",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: colorDistance(distance),
+                  ),
+                )
+              ],
             )
           ],
         ),
       ),
     );
+  }
+
+  Color colorDistance(double distance) {
+    if (distance >= 10) return Colors.red;
+    if (distance >= 5) return Colors.yellow;
+    return Colors.green;
   }
 }
