@@ -42,7 +42,7 @@ class CardInfo extends StatelessWidget {
                 Text(
                   "${distance}km",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 22,
                     color: colorDistance(distance),
                   ),
                 )
