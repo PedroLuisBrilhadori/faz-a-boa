@@ -5,10 +5,12 @@ import 'package:faz_a_boa/view/main_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.top]);
 
   SystemChrome.setSystemUIChangeCallback((systemOverlaysAreVisible) =>
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack));
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: [SystemUiOverlay.top]));
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

@@ -23,29 +23,39 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        FZBAppBar('Postos'),
-        Expanded(
-            child: ListView(
-          children: [
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-            CardWidget(stations[0]),
-          ],
-        )),
-      ]),
+      backgroundColor: Colors.white,
+      body: SafeArea(child: AppColumn()),
       bottomNavigationBar: FZBNavigationBar(),
       endDrawer: ConfigDrawer(),
     );
+  }
+}
+
+class AppColumn extends StatelessWidget {
+  const AppColumn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      FZBAppBar('Postos'),
+      Expanded(
+          child: ListView(
+        children: [
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+          CardWidget(stations[0]),
+        ],
+      )),
+    ]);
   }
 }
