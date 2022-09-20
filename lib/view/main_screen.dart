@@ -3,6 +3,7 @@
 import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
 import 'package:faz_a_boa/widgets/card/card.dart';
 import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
+import 'package:faz_a_boa/view/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/drawer/config_drawer.dart';
@@ -17,7 +18,13 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return LoginScreen();
+  }
+}
+
+/*
+
+Scaffold(
       body: Column(children: [
         FZBAppBar('Postos'),
         Expanded(
@@ -33,6 +40,5 @@ class _MainScreenState extends State<MainScreen> {
       ]),
       bottomNavigationBar: FZBNavigationBar(),
       endDrawer: ConfigDrawer(),
-    );
-  }
-}
+
+      */
