@@ -16,7 +16,11 @@ class MainScreen extends StatefulWidget {
 }
 
 List<CardData> stations = [
-  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.5, 11)
+  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.0, 11),
+  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 5, 10),
+  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 2, 6),
+  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 1, 5),
+  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 3, 3),
 ];
 
 class _MainScreenState extends State<MainScreen> {
@@ -42,10 +46,10 @@ class AppColumn extends StatelessWidget {
           child: ListView(
         children: [
           CardWidget(stations[0]),
-          CardWidget(stations[0]),
-          CardWidget(stations[0]),
-          CardWidget(stations[0]),
-          CardWidget(stations[0]),
+          CardWidget(stations[1]),
+          CardWidget(stations[2]),
+          CardWidget(stations[3]),
+          CardWidget(stations[4]),
           CardWidget(stations[0]),
           CardWidget(stations[0]),
           CardWidget(stations[0]),
