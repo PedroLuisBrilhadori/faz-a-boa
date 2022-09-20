@@ -1,4 +1,4 @@
-import 'package:faz_a_boa/view/login_screen.dart';
+import 'package:faz_a_boa/app/modules/login/login.page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/app_bar/app_bar.dart';
@@ -54,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(child: LoginScreen()),
+      body: SafeArea(child: AppColumn()),
       bottomNavigationBar: FZBNavigationBar(),
       endDrawer: ConfigDrawer(),
     );

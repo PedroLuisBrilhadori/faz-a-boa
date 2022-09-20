@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+
 import 'package:faz_a_boa/app/modules/login/teste.dart';
 
 class LoginScreen extends StatefulWidget {
