@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
 import 'package:faz_a_boa/widgets/card/card.dart';
-import 'package:faz_a_boa/widgets/card/model/card_data.dart';
+import 'package:faz_a_boa/widgets/card/model/card_data.model.dart';
 import 'package:faz_a_boa/widgets/drawer/config_drawer.dart';
 import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
 

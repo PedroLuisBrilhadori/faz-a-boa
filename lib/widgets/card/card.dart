@@ -1,5 +1,5 @@
 import 'package:faz_a_boa/widgets/card/card_info.dart';
-import 'package:faz_a_boa/widgets/card/model/card_data.dart';
+import 'package:faz_a_boa/widgets/card/model/card_data.model.dart';
 import 'package:faz_a_boa/widgets/card/photo_rate.dart';
 import 'package:flutter/material.dart';
 
