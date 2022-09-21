@@ -1,6 +1,5 @@
+import 'package:faz_a_boa/app/widgets/drawer/model/config_options.model.dart';
 import 'package:flutter/material.dart';
-
-import 'package:faz_a_boa/widgets/drawer/model/config_options.model.dart';
 
 class ConfigDrawer extends StatefulWidget {
   const ConfigDrawer({Key? key}) : super(key: key);

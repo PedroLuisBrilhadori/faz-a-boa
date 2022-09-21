@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:faz_a_boa/widgets/chips/model/chips.model.dart';
-import 'package:faz_a_boa/widgets/chips/list_chips.dart';
-import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
-import 'package:faz_a_boa/widgets/card/card.dart';
-import 'package:faz_a_boa/widgets/card/model/card_data.model.dart';
-import 'package:faz_a_boa/widgets/drawer/config_drawer.dart';
-import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
+import 'package:faz_a_boa/app/widgets/app_bar/app_bar.dart';
+import 'package:faz_a_boa/app/widgets/card/card.dart';
+import 'package:faz_a_boa/app/widgets/card/model/card_data.model.dart';
+import 'package:faz_a_boa/app/widgets/chips/list_chips.dart';
+import 'package:faz_a_boa/app/widgets/chips/model/chips.model.dart';
+import 'package:faz_a_boa/app/widgets/drawer/config_drawer.dart';
+import 'package:faz_a_boa/app/widgets/navigation_bar/navigation_bar.dart';
 
 List<CardData> stations = [
   CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.0, 11),

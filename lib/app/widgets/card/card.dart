@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:faz_a_boa/widgets/card/card_info.dart';
-import 'package:faz_a_boa/widgets/card/model/card_data.model.dart';
-import 'package:faz_a_boa/widgets/card/photo_rate.dart';
+import 'package:faz_a_boa/app/widgets/card/card_info.dart';
+import 'package:faz_a_boa/app/widgets/card/model/card_data.model.dart';
+import 'package:faz_a_boa/app/widgets/card/photo_rate.dart';
 
 class CardWidget extends StatelessWidget {
   final CardData cardData;

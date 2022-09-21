@@ -1,23 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:faz_a_boa/view/main_screen.dart';
+import 'app/app.module.dart';
+import 'app/app.widget.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.top]);
-
-  SystemChrome.setSystemUIChangeCallback((systemOverlaysAreVisible) =>
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-          overlays: [SystemUiOverlay.top]));
-
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'faz A boa',
-    initialRoute: 'main',
-    routes: {
-      'main': (context) => const MainScreen(),
-    },
-  ));
-}
+void main() =>
+    runApp(ModularApp(module: AppModule(), child: const AppWidget()));
