@@ -17,7 +17,6 @@ class _AppBarIconWidgetState extends State<AppBarIconWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 17.0, bottom: 17.0),
         decoration: BoxDecoration(
           color: Color.fromRGBO(25, 118, 210, 1),
           borderRadius: widget.borderRadius,
