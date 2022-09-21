@@ -17,6 +17,7 @@ class _FZBAppBarState extends State<FZBAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),

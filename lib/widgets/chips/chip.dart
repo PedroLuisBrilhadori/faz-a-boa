@@ -15,6 +15,11 @@ class _FZBChipState extends State<FZBChip> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextButton(
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: const BorderSide(color: Colors.black)))),
         onPressed: widget.onTap,
         child: Text(
           widget.label,

@@ -4,18 +4,12 @@ import 'package:faz_a_boa/widgets/chips/chip.dart';
 import 'package:faz_a_boa/widgets/chips/model/chips.model.dart';
 
 final List<ChipModel> chips = [
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
-  ChipModel(label: 'teste'),
+  ChipModel(label: 'Ordenar'),
+  ChipModel(label: 'Favoritos'),
+  ChipModel(label: 'Distância'),
+  ChipModel(label: 'Preço'),
+  ChipModel(label: 'Combustível'),
+  ChipModel(label: 'Bandeira'),
 ];
 
 class ChipsListWidget extends StatelessWidget {
@@ -23,7 +17,7 @@ class ChipsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: chipList(chips));
+    return Expanded(flex: 1, child: chipList(chips));
   }
 
   Widget chipList(List<ChipModel> chips) {
