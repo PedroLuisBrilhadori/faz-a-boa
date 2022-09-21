@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class FZBNavigationBar extends StatefulWidget {
@@ -10,7 +8,7 @@ class FZBNavigationBar extends StatefulWidget {
 }
 
 class _FZBNavigationBarState extends State<FZBNavigationBar> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -21,24 +19,26 @@ class _FZBNavigationBarState extends State<FZBNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
           ),
           child: BottomNavigationBar(
-              backgroundColor: Color.fromRGBO(25, 118, 210, 1),
+              backgroundColor: const Color.fromRGBO(25, 118, 210, 1),
               fixedColor: Colors.white,
               showSelectedLabels: false,
               showUnselectedLabels: false,
               items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.search), label: "Procurar"),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.home_outlined,
@@ -49,8 +49,6 @@ class _FZBNavigationBarState extends State<FZBNavigationBar> {
                       Icons.map_outlined,
                     ),
                     label: "Mapa"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: "Usuário")
               ],
               currentIndex: _selectedIndex,
               onTap: _onItemTapped),
