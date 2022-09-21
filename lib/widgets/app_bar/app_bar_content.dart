@@ -40,7 +40,7 @@ class _AppbarContentState extends State<AppbarContent> {
           bottomRight: Radius.circular(12.0),
         ),
         IconButton(
-          icon: const Icon(Icons.home_outlined),
+          icon: const Icon(Icons.search_outlined),
           color: Colors.white,
           onPressed: () {},
         ));

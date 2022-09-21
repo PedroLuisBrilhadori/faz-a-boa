@@ -41,9 +41,9 @@ class _FZBNavigationBarState extends State<FZBNavigationBar> {
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.search,
+                      Icons.home_outlined,
                     ),
-                    label: "Procurar"),
+                    label: "Início"),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.map_outlined,
