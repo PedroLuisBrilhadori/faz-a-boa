@@ -15,42 +15,43 @@ class CardInfo extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(5, 10, 10, 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto'),
-                ),
-                Text(
-                  address,
-                  style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.black87,
-                      fontFamily: 'Roboto'),
-                )
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "${distance}km",
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: colorDistance(distance),
-                  ),
-                )
-              ],
-            )
-          ],
+          children: [cardTitle(title), cardDistance(distance)],
         ),
       ),
+    );
+  }
+
+  Widget cardTitle(String title) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+              fontSize: 16, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
+        ),
+        Text(
+          address,
+          style: const TextStyle(
+              fontSize: 12, color: Colors.black87, fontFamily: 'Roboto'),
+        )
+      ],
+    );
+  }
+
+  Widget cardDistance(double distance) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          "${distance}km",
+          style: TextStyle(
+            fontSize: 22,
+            color: colorDistance(distance),
+          ),
+        )
+      ],
     );
   }
 

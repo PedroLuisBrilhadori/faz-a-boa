@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ConfigOption {
-  final String title;
+  final String label;
   final Color color;
-  final IconData leadingIcon;
-  final Function ontap;
+  final IconData icon;
+  final void Function() onTap;
 
-  ConfigOption(this.title, this.color, this.leadingIcon, this.ontap);
+  ConfigOption(
+      {required this.label,
+      required this.color,
+      required this.icon,
+      required this.onTap});
 }

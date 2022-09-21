@@ -1,12 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:faz_a_boa/widgets/app_bar/app_bar_icon.dart';
 import 'package:flutter/material.dart';
+
+import 'package:faz_a_boa/widgets/app_bar/app_bar_content.dart';
 
 class FZBAppBar extends StatefulWidget {
   final String title;
+  final Widget? child;
 
-  const FZBAppBar(this.title, {Key? key}) : super(key: key);
+  const FZBAppBar({Key? key, required this.title, this.child})
+      : super(key: key);
 
   @override
   State<FZBAppBar> createState() => _FZBAppBarState();
@@ -16,7 +17,7 @@ class _FZBAppBarState extends State<FZBAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 85.0,
+        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -24,37 +25,12 @@ class _FZBAppBarState extends State<FZBAppBar> {
             blurRadius: 2,
           )
         ]),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            AppBarIconWidget(
-                BorderRadius.only(
-                  topRight: Radius.circular(12.0),
-                  bottomRight: Radius.circular(12.0),
-                ),
-                IconButton(
-                  icon: Icon(Icons.home_outlined),
-                  color: Colors.white,
-                  onPressed: () {},
-                )),
-            Text(
-              widget.title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            AppBarIconWidget(
-              BorderRadius.only(
-                topLeft: Radius.circular(12.0),
-                bottomLeft: Radius.circular(12.0),
-              ),
-              IconButton(
-                icon: Icon(Icons.settings_outlined),
-                color: Colors.white,
-                onPressed: () {},
-              ),
-            ),
+            AppbarContent(widget.title),
+            widget.child != null ? widget.child! : Container()
           ],
         ));
   }

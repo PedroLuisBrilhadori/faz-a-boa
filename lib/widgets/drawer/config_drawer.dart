@@ -1,5 +1,6 @@
-import 'package:faz_a_boa/widgets/drawer/model/config_options.model.dart';
 import 'package:flutter/material.dart';
+
+import 'package:faz_a_boa/widgets/drawer/model/config_options.model.dart';
 
 class ConfigDrawer extends StatefulWidget {
   const ConfigDrawer({Key? key}) : super(key: key);
@@ -17,10 +18,25 @@ class _ConfigDrawerState extends State<ConfigDrawer> {
       child: Text('Configurações'),
     ),
     ConfigOption(
-        "Notificações", Colors.black, Icons.chat_bubble_outlined, () => {}),
-    ConfigOption('GPS', Colors.black, Icons.gps_fixed_outlined, () => {}),
-    ConfigOption('Sobre', Colors.black, Icons.info_outline, () => {}),
-    ConfigOption('Sair', Colors.red, Icons.exit_to_app_outlined, () => {}),
+        label: "Notificações",
+        color: Colors.black,
+        icon: Icons.chat_bubble_outlined,
+        onTap: () => {}),
+    ConfigOption(
+        label: 'GPS',
+        color: Colors.black,
+        icon: Icons.gps_fixed_outlined,
+        onTap: () => {}),
+    ConfigOption(
+        label: 'Sobre',
+        color: Colors.black,
+        icon: Icons.info_outline,
+        onTap: () => {}),
+    ConfigOption(
+        label: 'Sair',
+        color: Colors.red,
+        icon: Icons.exit_to_app_outlined,
+        onTap: () => {}),
   ];
 
   @override
@@ -34,10 +50,9 @@ class _ConfigDrawerState extends State<ConfigDrawer> {
           if (options[index] is! ConfigOption) return Container();
 
           return ListTile(
-            onTap: options[index].ontap,
-            leading:
-                Icon(options[index].leadingIcon, color: options[index].color),
-            title: Text(options[index].title),
+            onTap: options[index].onTap,
+            leading: Icon(options[index].icon, color: options[index].color),
+            title: Text(options[index].label),
           );
         },
       ),
