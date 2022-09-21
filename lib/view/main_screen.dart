@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:faz_a_boa/widgets/chips/model/chips.model.dart';
 import 'package:faz_a_boa/widgets/chips/list_chips.dart';
 import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
 import 'package:faz_a_boa/widgets/card/card.dart';
 import 'package:faz_a_boa/widgets/card/model/card_data.model.dart';
 import 'package:faz_a_boa/widgets/drawer/config_drawer.dart';
 import 'package:faz_a_boa/widgets/navigation_bar/navigation_bar.dart';
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
 
 List<CardData> stations = [
   CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.0, 11),
@@ -38,6 +32,22 @@ List<Widget> appList = [
   CardWidget(stations[0]),
 ];
 
+List<ChipModel> chipsList = [
+  ChipModel(label: 'Ordenar'),
+  ChipModel(label: 'Favoritos'),
+  ChipModel(label: 'Distância'),
+  ChipModel(label: 'Preço'),
+  ChipModel(label: 'Combustível'),
+  ChipModel(label: 'Bandeira'),
+];
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
@@ -56,11 +66,11 @@ class AppColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const Expanded(
+      Expanded(
         flex: 1,
         child: FZBAppBar(
           title: 'Postos',
-          child: ChipsListWidget(),
+          child: ChipsListWidget(chipsList: chipsList),
         ),
       ),
       Flexible(flex: 5, child: ListView(children: appList)),

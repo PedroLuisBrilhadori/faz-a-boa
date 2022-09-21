@@ -3,21 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:faz_a_boa/widgets/chips/chip.dart';
 import 'package:faz_a_boa/widgets/chips/model/chips.model.dart';
 
-final List<ChipModel> chips = [
-  ChipModel(label: 'Ordenar'),
-  ChipModel(label: 'Favoritos'),
-  ChipModel(label: 'Distância'),
-  ChipModel(label: 'Preço'),
-  ChipModel(label: 'Combustível'),
-  ChipModel(label: 'Bandeira'),
-];
-
 class ChipsListWidget extends StatelessWidget {
-  const ChipsListWidget({Key? key}) : super(key: key);
+  final List<ChipModel> chipsList;
+
+  const ChipsListWidget({Key? key, required this.chipsList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(flex: 1, child: chipList(chips));
+    return Expanded(flex: 1, child: chipList(chipsList));
   }
 
   Widget chipList(List<ChipModel> chips) {
