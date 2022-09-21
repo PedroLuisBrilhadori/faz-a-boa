@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-textField(label, variable) {
+Widget textField(String label, TextEditingController variable) {
   return Container(
       margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
       child: TextFormField(
@@ -16,7 +17,7 @@ textField(label, variable) {
               border: const UnderlineInputBorder())));
 }
 
-loginButton(label, context) {
+Widget loginButton(String label, BuildContext context) {
   final double screenWidthSize = MediaQuery.of(context).size.width;
   return Container(
       margin: const EdgeInsets.only(top: 30),
@@ -31,12 +32,12 @@ loginButton(label, context) {
       ));
 }
 
-connectWithButton(Buttons button, label) {
-      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      SignInButton(
-        button,
-        text: label,
-        onPressed: () {},
-      ),
-    ]);
+Widget connectWithButton(Buttons button, String label) {
+  return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+    SignInButton(
+      button,
+      text: label,
+      onPressed: () {},
+    ),
+  ]);
 }
