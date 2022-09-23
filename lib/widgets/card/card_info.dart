@@ -56,8 +56,8 @@ class CardInfo extends StatelessWidget {
   }
 
   Color colorDistance(double distance) {
-    if (distance >= 10) return Colors.red;
-    if (distance >= 5) return Colors.yellow;
-    return Colors.green;
+    if (distance >= 10) return Colors.red.shade700;
+    if (distance >= 5) return Colors.yellow.shade700;
+    return Colors.green.shade700;
   }
 }

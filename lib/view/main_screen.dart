@@ -1,6 +1,6 @@
+import 'package:faz_a_boa/view/login_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:faz_a_boa/view/login_screen.dart';
 import 'package:faz_a_boa/widgets/chips/model/chips.model.dart';
 import 'package:faz_a_boa/widgets/chips/list_chips.dart';
 import 'package:faz_a_boa/widgets/app_bar/app_bar.dart';
