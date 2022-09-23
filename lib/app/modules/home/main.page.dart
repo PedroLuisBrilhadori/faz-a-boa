@@ -1,4 +1,3 @@
-import 'package:faz_a_boa/app/modules/login/login.page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/app_bar/app_bar.dart';
