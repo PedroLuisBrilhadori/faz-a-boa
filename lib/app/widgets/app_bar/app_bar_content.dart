@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:faz_a_boa/widgets/app_bar/app_bar_icon.dart';
+import 'package:faz_a_boa/app/widgets/app_bar/app_bar_icon.dart';
 
 class AppbarContent extends StatefulWidget {
   final String title;

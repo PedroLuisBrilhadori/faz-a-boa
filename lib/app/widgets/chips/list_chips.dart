@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:faz_a_boa/widgets/chips/chip.dart';
-import 'package:faz_a_boa/widgets/chips/model/chips.model.dart';
+import 'package:faz_a_boa/app/widgets/chips/chip.dart';
+import 'package:faz_a_boa/app/widgets/chips/model/chips.model.dart';
 
 class ChipsListWidget extends StatelessWidget {
   final List<ChipModel> chipsList;
