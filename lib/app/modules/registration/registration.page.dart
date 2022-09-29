@@ -43,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 const SizedBox(height: 5.0),
                 textField('CPF', cpf),
                 const SizedBox(height: 5.0),
-                passwordField('Senha', password),
+                PasswordField(label: 'Senha', variable: password),
               ],
             ),
             //BUTTONS

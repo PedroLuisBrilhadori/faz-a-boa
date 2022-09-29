@@ -16,9 +16,13 @@ Widget textField(String label, TextEditingController variable) {
               ),
               border: const UnderlineInputBorder())));
 }
-/*
+
 class PasswordField extends StatefulWidget {
-  const PasswordField({super.key});
+  final String label;
+  final TextEditingController? variable;
+
+  const PasswordField({Key? key, required this.label, this.variable})
+      : super(key: key);
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -30,52 +34,29 @@ class _PasswordFieldState extends State<PasswordField> {
     bool isObscure = true;
 
     return Container(
-      margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
-      child: TextFormField(
-          obscureText: isObscure,
-          style: const TextStyle(fontSize: 22),
-          controller: variable,
-          decoration: InputDecoration(
-              suffixIcon: IconButton(
-                icon: Icon(
-                  isObscure ? Icons.visibility : Icons.visibility_off,
+        margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
+        child: TextFormField(
+            obscureText: isObscure,
+            style: const TextStyle(fontSize: 22),
+            controller: widget.variable,
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isObscure = !isObscure;
+                    });
+                  },
+                  icon: Icon(
+                    isObscure ? Icons.visibility : Icons.visibility_off,
+                  ),
                 ),
-                onPressed: () {
-                  setState(() {
-                    isObscure = !isObscure;
-                  });
-                },
-              ),
-              labelText: label,
-              labelStyle: const TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-              ),
-              border: const UnderlineInputBorder()))
-    );
+                labelText: widget.label,
+                labelStyle: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+                border: const UnderlineInputBorder())));
   }
-}
-*/
-
-Widget passwordField(String label, TextEditingController variable) {
-  bool isObscure = true;
-
-  return Container(
-      margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
-      child: TextFormField(
-          obscureText: isObscure,
-          style: const TextStyle(fontSize: 22),
-          controller: variable,
-          decoration: InputDecoration(
-              suffixIcon: const Icon(
-                Icons.visibility,
-              ),
-              labelText: label,
-              labelStyle: const TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-              ),
-              border: const UnderlineInputBorder())));
 }
 
 Widget loginButton(String label, BuildContext context) {
