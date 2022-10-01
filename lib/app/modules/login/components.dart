@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-Widget textField(String label, TextEditingController variable) {
+Widget textField(String label, TextEditingController variable, TextInputType keyboard) {
+
   return Container(
       margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
       child: TextFormField(
+          keyboardType: keyboard,
           style: const TextStyle(fontSize: 22),
           controller: variable,
           decoration: InputDecoration(
