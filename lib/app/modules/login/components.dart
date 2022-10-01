@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-Widget textField(String label, TextEditingController variable, TextInputType keyboard) {
-
+Widget textField(
+    {required String label,
+    required TextEditingController controller,
+    TextInputType textInputType = TextInputType.text}) {
   return Container(
       margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
       child: TextFormField(
-          keyboardType: keyboard,
+          keyboardType: textInputType,
           style: const TextStyle(fontSize: 22),
-          controller: variable,
+          controller: controller,
           decoration: InputDecoration(
               labelText: label,
               labelStyle: const TextStyle(
@@ -21,9 +23,9 @@ Widget textField(String label, TextEditingController variable, TextInputType key
 
 class PasswordField extends StatefulWidget {
   final String label;
-  final TextEditingController? variable;
+  final TextEditingController controller;
 
-  const PasswordField({Key? key, required this.label, this.variable})
+  const PasswordField({Key? key, required this.label, required this.controller})
       : super(key: key);
 
   @override
@@ -32,16 +34,15 @@ class PasswordField extends StatefulWidget {
 
 class _PasswordFieldState extends State<PasswordField> {
   bool isObscure = true;
-    
+
   @override
   Widget build(BuildContext context) {
-
     return Container(
         margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
         child: TextFormField(
             obscureText: isObscure,
             style: const TextStyle(fontSize: 22),
-            controller: widget.variable,
+            controller: widget.controller,
             decoration: InputDecoration(
                 suffixIcon: IconButton(
                   onPressed: () {

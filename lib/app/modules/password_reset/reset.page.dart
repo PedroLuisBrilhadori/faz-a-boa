@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_triple/flutter_triple.dart';
 
 import '../login/components.dart';
 
@@ -13,6 +16,33 @@ class PasswordReset extends StatefulWidget {
 
 class _PasswordResetState extends State<PasswordReset> {
   bool screenState = false;
+
+  final List<FieldModel> fields = [
+    FieldModel(
+        controller: TextEditingController(),
+        label: 'Email',
+        textInputType: TextInputType.emailAddress),
+    FieldModel(
+        controller: TextEditingController(),
+        label: 'CPF',
+        textInputType: TextInputType.number),
+  ];
+
+  final List<FieldModel> fadsields = [
+    FieldModel(
+        controller: TextEditingController(),
+        label: 'Email',
+        textInputType: TextInputType.emailAddress),
+    FieldModel(
+        controller: TextEditingController(),
+        label: 'CPF',
+        textInputType: TextInputType.number),
+    FieldModel(
+        controller: TextEditingController(),
+        label: 'Senha',
+        textInputType: TextInputType.number,
+        passwordField: true),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +61,9 @@ class _PasswordResetState extends State<PasswordReset> {
                         style: TextStyle(
                             fontSize: 27, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 12.0),
-                    headerText(screenState),
+                    HeaderText(
+                      screenState: screenState,
+                    ),
                   ]),
             ),
             //TEXT FIELDS
@@ -39,18 +71,26 @@ class _PasswordResetState extends State<PasswordReset> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 40.0),
-                BodyFields(
-                  screenState: screenState,
-                ),
+                BodyFields(fields: screenState ? fields : fadsields),
               ],
             ),
             //BUTTONS
             Column(
               children: [
                 const SizedBox(height: 90.0),
-                Button(label: 'Enviar', tContext: context /*, Colors.green*/),
+                Button(
+                  label: 'Enviar',
+                  tContext: context,
+                  color: Colors.green,
+                  onPressed: () => {},
+                ),
                 const SizedBox(height: 17.0),
-                flowButton('Voltar', context, Colors.red)
+                Button(
+                  label: 'Voltar',
+                  tContext: context,
+                  color: Colors.red,
+                  onPressed: () => {},
+                )
               ],
             ),
           ],
@@ -60,16 +100,23 @@ class _PasswordResetState extends State<PasswordReset> {
   }
 }
 
-Widget headerText(bool screenState) {
-  if (screenState) {
-    return Column(
-      children: const [
-        Text(
-            'Esqueceu a senha? Digite seu e-mail abaixo para começarmos a redefinir.',
-            style: TextStyle(fontSize: 19))
-      ],
-    );
-  } else {
+class HeaderText extends StatelessWidget {
+  final bool screenState;
+
+  const HeaderText({Key? key, required this.screenState}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (screenState) {
+      return Column(
+        children: const [
+          Text(
+              'Esqueceu a senha? Digite seu e-mail abaixo para começarmos a redefinir.',
+              style: TextStyle(fontSize: 19))
+        ],
+      );
+    }
+
     return Column(
       children: const [
         Text(
@@ -79,141 +126,77 @@ Widget headerText(bool screenState) {
     );
   }
 }
+
 /*------------------------------------------*/
-
-Widget flowButton(String label, BuildContext context, Color color) {
-  final double screenWidthSize = MediaQuery.of(context).size.width;
-  return TextButton(
-    style: ElevatedButton.styleFrom(
-        minimumSize: Size(screenWidthSize - 48, 55), backgroundColor: color),
-    onPressed: () {},
-    child: Text(
-      label,
-      style: const TextStyle(fontSize: 18, color: Colors.white),
-    ),
-  );
-}
-
-class Button extends StatefulWidget {
+class Button extends StatelessWidget {
   final String label;
   final BuildContext tContext;
-  /*final Color color;*/
+  final Color color;
+  final void Function() onPressed;
 
   const Button({
     Key? key,
     required this.label,
     required this.tContext,
+    required this.color,
+    required this.onPressed,
     /*required this.color*/
   }) : super(key: key);
 
-  @override
-  State<Button> createState() => _ButtonState();
-}
-
-class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
     final double screenWidthSize = MediaQuery.of(context).size.width;
     return TextButton(
       style: ElevatedButton.styleFrom(
-          minimumSize:
-              Size(screenWidthSize - 48, 55) /*, backgroundColor: color*/),
-      onPressed: () {},
+          minimumSize: Size(screenWidthSize - 48, 55), backgroundColor: color),
+      onPressed: onPressed,
       child: Text(
-        widget.label,
+        label,
         style: const TextStyle(fontSize: 18, color: Colors.white),
       ),
     );
   }
 }
 
-/*
-Widget bodyFields(bool screenState) {
-  var email = TextEditingController();
-  var cpf = TextEditingController();
-  var code = TextEditingController();
-  var password = TextEditingController();
-  var comPassword = TextEditingController();
-
-  bool isButtonActive = true;
-
-  email.addListener(() {
-    final isButtonActive = email.text.isNotEmpty;
-    setState()
-  });
-
-  @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
-  void dispose() {
-    email.dispose();
-    cpf.dispose();
-    code.dispose();
-    password.dispose();
-    comPassword.dispose();
-  }
-
-  if (screenState) {
-    return Column(
-      children: [
-        textField('E-mail', email, TextInputType.emailAddress),
-        textField('CPF', cpf, TextInputType.number),
-      ],
-    );
-  } else {
-    return Column(
-      children: [
-        textField('Código', code, TextInputType.text),
-        PasswordField(label: 'Nova Senha', variable: password),
-        PasswordField(label: 'Confirmar Senha', variable: comPassword),
-      ],
-    );
-  }
-}
-*/
-
-class BodyFields extends StatefulWidget {
-  final bool screenState;
-
-  const BodyFields({Key? key, required this.screenState}) : super(key: key);
-
-  @override
-  State<BodyFields> createState() => _BodyFieldsState();
-}
-
-class _BodyFieldsState extends State<BodyFields> {
-  var email = TextEditingController();
-  var cpf = TextEditingController();
-  var code = TextEditingController();
-  var password = TextEditingController();
-  var comPassword = TextEditingController();
+class BodyFields extends StatelessWidget {
+  final List<FieldModel> fields;
+  const BodyFields({Key? key, required this.fields}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    email.addListener(() {
-      final innerIsButtonActive = false;
-      setState(() => isButtonActive = innerIsButtonActive);
-    });
-
-    if (widget.screenState) {
-      return Column(
-        children: [
-          textField('E-mail', email, TextInputType.emailAddress),
-          textField('CPF', cpf, TextInputType.number),
-        ],
-      );
-    } else {
-      return Column(
-        children: [
-          textField('Código', code, TextInputType.text),
-          PasswordField(label: 'Nova Senha', variable: password),
-          PasswordField(label: 'Confirmar Senha', variable: comPassword),
-        ],
-      );
-    }
+    return Column(
+      children: generateFields(),
+    );
   }
+
+  List<Widget> generateFields() {
+    final List<Widget> widgetFields = [];
+
+    for (var field in fields) {
+      if (field.passwordField) {
+        widgetFields.add(
+            PasswordField(label: field.label, controller: field.controller));
+      } else {
+        widgetFields.add(textField(
+            label: field.label,
+            controller: field.controller,
+            textInputType: field.textInputType));
+      }
+    }
+
+    return widgetFields;
+  }
+}
+
+class FieldModel {
+  TextEditingController controller;
+  String label;
+  TextInputType textInputType;
+  bool passwordField;
+
+  FieldModel(
+      {required this.controller,
+      required this.label,
+      required this.textInputType,
+      this.passwordField = false});
 }
