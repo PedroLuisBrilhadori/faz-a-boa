@@ -29,9 +29,10 @@ class PasswordField extends StatefulWidget {
 }
 
 class _PasswordFieldState extends State<PasswordField> {
+  bool isObscure = true;
+    
   @override
   Widget build(BuildContext context) {
-    bool isObscure = true;
 
     return Container(
         margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
@@ -47,7 +48,7 @@ class _PasswordFieldState extends State<PasswordField> {
                     });
                   },
                   icon: Icon(
-                    isObscure ? Icons.visibility : Icons.visibility_off,
+                    isObscure ? Icons.visibility_off : Icons.visibility,
                   ),
                 ),
                 labelText: widget.label,
