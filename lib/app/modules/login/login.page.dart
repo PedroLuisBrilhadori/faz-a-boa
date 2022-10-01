@@ -36,9 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 60.0),
-                textField('Email', login),
+                textField('Email', login, TextInputType.emailAddress),
                 const SizedBox(height: 5.0),
-                textField('Senha', password),
+                textField('Senha', password, TextInputType.text),
                 const SizedBox(height: 10.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
