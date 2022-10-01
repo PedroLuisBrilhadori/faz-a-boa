@@ -37,13 +37,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 60.0),
-                textField('Nome Completo', name, TextInputType.name),
+                textField(
+                    label: 'Nome Completo',
+                    controller: name,
+                    textInputType: TextInputType.name),
                 const SizedBox(height: 5.0),
-                textField('E-mail', email, TextInputType.emailAddress),
+                textField(
+                    label: 'E-mail',
+                    controller: email,
+                    textInputType: TextInputType.emailAddress),
                 const SizedBox(height: 5.0),
-                textField('CPF', cpf, TextInputType.number),
+                textField(
+                    label: 'CPF',
+                    controller: cpf,
+                    textInputType: TextInputType.number),
                 const SizedBox(height: 5.0),
-                PasswordField(label: 'Senha', variable: password),
+                PasswordField(label: 'Senha', controller: password),
               ],
             ),
             //BUTTONS
