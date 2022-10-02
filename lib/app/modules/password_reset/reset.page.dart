@@ -1,11 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_triple/flutter_triple.dart';
 
-import '../login/components.dart';
-
-bool isButtonActive = true;
+import 'package:faz_a_boa/app/modules/login/components.dart';
+import 'package:faz_a_boa/app/modules/password_reset/pages.dart';
 
 class PasswordReset extends StatefulWidget {
   const PasswordReset({super.key});
@@ -15,65 +11,18 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
-  bool screenState = false;
-
-  final List<FieldModel> fields = [
-    FieldModel(
-        controller: TextEditingController(),
-        label: 'Email',
-        textInputType: TextInputType.emailAddress),
-    FieldModel(
-        controller: TextEditingController(),
-        label: 'CPF',
-        textInputType: TextInputType.number),
-  ];
-
-  final List<FieldModel> fadsields = [
-    FieldModel(
-        controller: TextEditingController(),
-        label: 'Email',
-        textInputType: TextInputType.emailAddress),
-    FieldModel(
-        controller: TextEditingController(),
-        label: 'CPF',
-        textInputType: TextInputType.number),
-    FieldModel(
-        controller: TextEditingController(),
-        label: 'Senha',
-        textInputType: TextInputType.number,
-        passwordField: true),
-  ];
+  bool emailSent = true;
 
   @override
   Widget build(BuildContext context) {
+    PageModel page = emailSent ? resetPassword : sendCode;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //HEADER
-            Padding(
-              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 120.0),
-                    const Text('Redefinir Senha',
-                        style: TextStyle(
-                            fontSize: 27, fontWeight: FontWeight.w700)),
-                    const SizedBox(height: 12.0),
-                    HeaderText(
-                      screenState: screenState,
-                    ),
-                  ]),
-            ),
-            //TEXT FIELDS
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 40.0),
-                BodyFields(fields: screenState ? fields : fadsields),
-              ],
-            ),
+            header(title: page.title, subTitle: page.subTitle),
+            fields(fields: page.fields),
             //BUTTONS
             Column(
               children: [
@@ -98,36 +47,36 @@ class _PasswordResetState extends State<PasswordReset> {
       ),
     );
   }
-}
 
-class HeaderText extends StatelessWidget {
-  final bool screenState;
+  Widget header({
+    required String title,
+    required String subTitle,
+  }) {
+    return Padding(
+        padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 120.0),
+          Text(title,
+              style:
+                  const TextStyle(fontSize: 27, fontWeight: FontWeight.w700)),
+          const SizedBox(height: 12.0),
+          Column(
+            children: [Text(subTitle, style: const TextStyle(fontSize: 19))],
+          ),
+        ]));
+  }
 
-  const HeaderText({Key? key, required this.screenState}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (screenState) {
-      return Column(
-        children: const [
-          Text(
-              'Esqueceu a senha? Digite seu e-mail abaixo para começarmos a redefinir.',
-              style: TextStyle(fontSize: 19))
-        ],
-      );
-    }
-
+  Widget fields({required List<FieldModel> fields}) {
     return Column(
-      children: const [
-        Text(
-            'Um e-mail com um código de confirmação foi enviado, insira o código e redifina sua senha!',
-            style: TextStyle(fontSize: 19))
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SizedBox(height: 40.0),
+        BodyFields(fields: fields),
       ],
     );
   }
 }
 
-/*------------------------------------------*/
 class Button extends StatelessWidget {
   final String label;
   final BuildContext tContext;
@@ -140,7 +89,6 @@ class Button extends StatelessWidget {
     required this.tContext,
     required this.color,
     required this.onPressed,
-    /*required this.color*/
   }) : super(key: key);
 
   @override
@@ -186,17 +134,4 @@ class BodyFields extends StatelessWidget {
 
     return widgetFields;
   }
-}
-
-class FieldModel {
-  TextEditingController controller;
-  String label;
-  TextInputType textInputType;
-  bool passwordField;
-
-  FieldModel(
-      {required this.controller,
-      required this.label,
-      required this.textInputType,
-      this.passwordField = false});
 }
