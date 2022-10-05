@@ -18,32 +18,40 @@ class _PasswordResetState extends State<PasswordReset> {
     PageModel page = emailSent ? resetPassword : sendCode;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            header(title: page.title, subTitle: page.subTitle),
-            fields(fields: page.fields),
-            //BUTTONS
-            Column(
-              children: [
-                const SizedBox(height: 90.0),
-                Button(
-                  label: 'Enviar',
-                  tContext: context,
-                  color: Colors.green,
-                  onPressed: () => {},
-                ),
-                const SizedBox(height: 17.0),
-                Button(
-                  label: 'Voltar',
-                  tContext: context,
-                  color: Colors.red,
-                  onPressed: () => {},
-                )
-              ],
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: CustomScrollView(reverse: true, slivers: [
+          SliverFillRemaining(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  header(title: page.title, subTitle: page.subTitle),
+                  fields(fields: page.fields),
+                  //BUTTONS
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const SizedBox(height: 90.0),
+                      Button(
+                        label: 'Enviar',
+                        color: Colors.green,
+                        onPressed: () => {},
+                      ),
+                      const SizedBox(height: 17.0),
+                      Button(
+                        label: 'Voltar',
+                        color: Colors.red,
+                        onPressed: () => {},
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ]),
       ),
     );
   }
@@ -52,25 +60,19 @@ class _PasswordResetState extends State<PasswordReset> {
     required String title,
     required String subTitle,
   }) {
-    return Padding(
-        padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(height: 120.0),
-          Text(title,
-              style:
-                  const TextStyle(fontSize: 27, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 12.0),
-          Column(
-            children: [Text(subTitle, style: const TextStyle(fontSize: 19))],
-          ),
-        ]));
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(title,
+          style: const TextStyle(fontSize: 27, fontWeight: FontWeight.w700)),
+      Column(
+        children: [Text(subTitle, style: const TextStyle(fontSize: 19))],
+      ),
+    ]);
   }
 
   Widget fields({required List<FieldModel> fields}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(height: 40.0),
         BodyFields(fields: fields),
       ],
     );
@@ -79,22 +81,21 @@ class _PasswordResetState extends State<PasswordReset> {
 
 class Button extends StatelessWidget {
   final String label;
-  final BuildContext tContext;
   final Color color;
-  final void Function() onPressed;
+  final dynamic onPressed;
 
   const Button({
     Key? key,
     required this.label,
-    required this.tContext,
     required this.color,
-    required this.onPressed,
-  }) : super(key: key);
+    this.onPressed,
+  })  : assert(onPressed != null || onPressed is! void Function()),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final double screenWidthSize = MediaQuery.of(context).size.width;
-    return TextButton(
+    return ElevatedButton(
       style: ElevatedButton.styleFrom(
           minimumSize: Size(screenWidthSize - 48, 55), backgroundColor: color),
       onPressed: onPressed,
@@ -119,16 +120,21 @@ class BodyFields extends StatelessWidget {
 
   List<Widget> generateFields() {
     final List<Widget> widgetFields = [];
+    const EdgeInsetsGeometry margin = EdgeInsets.only(top: 10);
 
     for (var field in fields) {
       if (field.passwordField) {
-        widgetFields.add(
-            PasswordField(label: field.label, controller: field.controller));
+        widgetFields.add(PasswordField(
+          label: field.label,
+          controller: field.controller,
+          marign: margin,
+        ));
       } else {
         widgetFields.add(textField(
             label: field.label,
             controller: field.controller,
-            textInputType: field.textInputType));
+            textInputType: field.textInputType,
+            margin: margin));
       }
     }
 

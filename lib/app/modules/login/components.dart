@@ -5,9 +5,11 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 Widget textField(
     {required String label,
     required TextEditingController controller,
+    EdgeInsetsGeometry margin =
+        const EdgeInsets.only(top: 15, left: 30, right: 30),
     TextInputType textInputType = TextInputType.text}) {
   return Container(
-      margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
+      margin: margin,
       child: TextFormField(
           keyboardType: textInputType,
           style: const TextStyle(fontSize: 22),
@@ -24,8 +26,13 @@ Widget textField(
 class PasswordField extends StatefulWidget {
   final String label;
   final TextEditingController controller;
+  final EdgeInsetsGeometry marign;
 
-  const PasswordField({Key? key, required this.label, required this.controller})
+  const PasswordField(
+      {Key? key,
+      required this.label,
+      required this.controller,
+      this.marign = const EdgeInsets.only(top: 15, left: 30, right: 30)})
       : super(key: key);
 
   @override
@@ -38,7 +45,7 @@ class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
+        margin: widget.marign,
         child: TextFormField(
             obscureText: isObscure,
             style: const TextStyle(fontSize: 22),
