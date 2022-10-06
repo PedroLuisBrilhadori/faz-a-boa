@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
@@ -37,22 +38,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 60.0),
-                textField(
+                FzTextField(
                     label: 'Nome Completo',
                     controller: name,
                     textInputType: TextInputType.name),
                 const SizedBox(height: 5.0),
-                textField(
+                FzTextField(
                     label: 'E-mail',
                     controller: email,
                     textInputType: TextInputType.emailAddress),
                 const SizedBox(height: 5.0),
-                textField(
+                FzTextField(
                     label: 'CPF',
                     controller: cpf,
                     textInputType: TextInputType.number),
                 const SizedBox(height: 5.0),
-                PasswordField(label: 'Senha', controller: password),
+                FzTextField(label: 'Senha', controller: password),
               ],
             ),
             //BUTTONS
