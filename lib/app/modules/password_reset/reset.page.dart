@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:faz_a_boa/app/modules/login/components.dart';
+import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:faz_a_boa/app/modules/password_reset/pages.dart';
 
 class PasswordReset extends StatefulWidget {
@@ -123,19 +123,12 @@ class BodyFields extends StatelessWidget {
     const EdgeInsetsGeometry margin = EdgeInsets.only(top: 10);
 
     for (var field in fields) {
-      if (field.passwordField) {
-        widgetFields.add(PasswordField(
-          label: field.label,
-          controller: field.controller,
-          marign: margin,
-        ));
-      } else {
-        widgetFields.add(textField(
-            label: field.label,
-            controller: field.controller,
-            textInputType: field.textInputType,
-            margin: margin));
-      }
+      widgetFields.add(FzTextField(
+        label: field.label,
+        controller: field.controller,
+        marign: margin,
+        passwordField: field.passwordField,
+      ));
     }
 
     return widgetFields;
