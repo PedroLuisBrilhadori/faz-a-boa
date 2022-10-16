@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:faz_a_boa/app/modules/password_reset/pages.dart';
 

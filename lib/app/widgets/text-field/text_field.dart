@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 
 class FzTextField extends StatefulWidget {
@@ -6,6 +8,7 @@ class FzTextField extends StatefulWidget {
   final EdgeInsetsGeometry marign;
   final bool passwordField;
   final TextInputType textInputType;
+  final String? Function(String?)? validator;
 
   const FzTextField({
     Key? key,
@@ -14,6 +17,7 @@ class FzTextField extends StatefulWidget {
     this.marign = const EdgeInsets.only(top: 15, left: 30, right: 30),
     this.passwordField = false,
     this.textInputType = TextInputType.text,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -21,20 +25,28 @@ class FzTextField extends StatefulWidget {
 }
 
 class FzTextFieldState extends State<FzTextField> {
-  bool isObscure = true;
+  bool isObscure = false;
+
+  @override
+  void initState() {
+    isObscure = widget.passwordField;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: widget.marign,
-        child: TextFormField(
-          obscureText: isObscure,
-          style: const TextStyle(fontSize: 22),
-          controller: widget.controller,
-          decoration: widget.passwordField
-              ? passwordDecoration()
-              : noPasswordDecoration(),
-        ));
+      margin: widget.marign,
+      child: TextFormField(
+        obscureText: isObscure,
+        style: const TextStyle(fontSize: 22),
+        controller: widget.controller,
+        decoration: widget.passwordField
+            ? passwordDecoration()
+            : noPasswordDecoration(),
+        validator: widget.validator,
+      ),
+    );
   }
 
   InputDecoration passwordDecoration() {
