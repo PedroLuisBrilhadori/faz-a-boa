@@ -47,16 +47,36 @@ final PageModel resetPassword = PageModel(
       textInputType: TextInputType.text,
     ),
     FieldModel(
-      controller: TextEditingController(),
-      label: 'Senha',
-      textInputType: TextInputType.text,
-      passwordField: true,
-    ),
+        controller: TextEditingController(),
+        label: 'Senha',
+        textInputType: TextInputType.text,
+        passwordField: true,
+        validator: (value) {
+          return passValidator(value);
+        },
+        onChanged: (value) {}),
     FieldModel(
       controller: TextEditingController(),
       label: 'Confirmar Senha',
       textInputType: TextInputType.text,
       passwordField: true,
+      validator: (value) {
+        return passValidator(value);
+      },
     ),
   ],
 );
+
+passValidator(String? value) {
+  RegExp regex =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+  if (value!.isEmpty) {
+    return 'Por favor, digite uma senha';
+  }
+
+  if (!regex.hasMatch(value)) {
+    return 'Por favor, entre com uma senha válida';
+  }
+
+  return null;
+}
