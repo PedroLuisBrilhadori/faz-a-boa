@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 
 class FzTextField extends StatefulWidget {
@@ -9,6 +7,8 @@ class FzTextField extends StatefulWidget {
   final bool passwordField;
   final TextInputType textInputType;
   final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
+  final void Function(String)? onChanged;
 
   const FzTextField({
     Key? key,
@@ -17,7 +17,9 @@ class FzTextField extends StatefulWidget {
     this.marign = const EdgeInsets.only(top: 15, left: 30, right: 30),
     this.passwordField = false,
     this.textInputType = TextInputType.text,
+    this.autovalidateMode = AutovalidateMode.disabled,
     this.validator,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -39,12 +41,14 @@ class FzTextFieldState extends State<FzTextField> {
       margin: widget.marign,
       child: TextFormField(
         obscureText: isObscure,
+        autovalidateMode: widget.autovalidateMode,
         style: const TextStyle(fontSize: 22),
         controller: widget.controller,
         decoration: widget.passwordField
             ? passwordDecoration()
             : noPasswordDecoration(),
         validator: widget.validator,
+        onChanged: widget.onChanged,
       ),
     );
   }

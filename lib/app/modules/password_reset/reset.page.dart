@@ -14,6 +14,8 @@ class PasswordReset extends StatefulWidget {
 class _PasswordResetState extends State<PasswordReset> {
   bool emailSent = true;
 
+  final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     PageModel page = emailSent ? resetPassword : sendCode;
@@ -38,13 +40,13 @@ class _PasswordResetState extends State<PasswordReset> {
                       Button(
                         label: 'Enviar',
                         color: Colors.green,
-                        onPressed: () => {},
+                        onPressed: () => {formkey.currentState!.validate()},
                       ),
                       const SizedBox(height: 17.0),
                       Button(
                         label: 'Voltar',
                         color: Colors.red,
-                        onPressed: () => {},
+                        onPressed: () => {formkey.currentState!.validate()},
                       )
                     ],
                   ),
@@ -71,11 +73,15 @@ class _PasswordResetState extends State<PasswordReset> {
   }
 
   Widget fields({required List<FieldModel> fields}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        BodyFields(fields: fields),
-      ],
+    return Form(
+      key: formkey,
+      autovalidateMode: AutovalidateMode.always,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          BodyFields(fields: fields),
+        ],
+      ),
     );
   }
 }
@@ -129,6 +135,9 @@ class BodyFields extends StatelessWidget {
         controller: field.controller,
         marign: margin,
         passwordField: field.passwordField,
+        validator: field.validator,
+        autovalidateMode: field.autovalidateMode,
+        onChanged: field.onChanged,
       ));
     }
 
