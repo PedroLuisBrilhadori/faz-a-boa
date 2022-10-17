@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 
 class FieldModel {
   String label;
-  TextEditingController controller;
-  EdgeInsetsGeometry marign;
   bool passwordField;
+  EdgeInsetsGeometry marign;
   TextInputType textInputType;
-  String? Function(String?)? validator;
+  TextEditingController controller;
   AutovalidateMode? autovalidateMode;
+  String? Function(String?)? validator;
   final void Function(String)? onChanged;
 
   FieldModel({

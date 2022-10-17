@@ -12,7 +12,7 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
-  bool emailSent = true;
+  bool emailSent = false;
 
   final formkey = GlobalKey<FormState>();
 
