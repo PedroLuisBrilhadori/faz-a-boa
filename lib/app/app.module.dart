@@ -1,8 +1,7 @@
-import 'package:faz_a_boa/app/modules/emailsent/email.module.dart';
-import 'package:faz_a_boa/app/modules/confirmed/confirmed.module.dart';
-import 'package:faz_a_boa/app/modules/login/login.module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:faz_a_boa/app/modules/login/login.module.dart';
+import 'package:faz_a_boa/app/modules/reset_password/reset_passoword.module.dart';
 import 'package:faz_a_boa/app/modules/home/home.module.dart';
 
 class AppModule extends Module {
@@ -13,7 +12,6 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/login', module: LoginModule()),
-    ModuleRoute('/email', module: EmailModule()),
-    ModuleRoute('/', module: ConfirmedModule()),
+    ModuleRoute('/', module: ResetPasswordModule()),
   ];
 }
