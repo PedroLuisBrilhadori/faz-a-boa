@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 
 class FzTextField extends StatefulWidget {
   final String label;
-  final TextEditingController controller;
-  final EdgeInsetsGeometry marign;
   final bool passwordField;
+  final EdgeInsetsGeometry marign;
   final TextInputType textInputType;
+  final TextEditingController controller;
   final String? Function(String?)? validator;
   final AutovalidateMode? autovalidateMode;
   final void Function(String)? onChanged;
 
   const FzTextField({
     Key? key,
+    this.validator,
+    this.onChanged,
+    // required
     required this.label,
     required this.controller,
-    this.marign = const EdgeInsets.only(top: 15, left: 30, right: 30),
+    // default
     this.passwordField = false,
     this.textInputType = TextInputType.text,
     this.autovalidateMode = AutovalidateMode.disabled,
-    this.validator,
-    this.onChanged,
+    this.marign = const EdgeInsets.only(top: 15, left: 30, right: 30),
   }) : super(key: key);
 
   @override

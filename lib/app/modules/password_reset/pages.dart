@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 
@@ -45,24 +45,29 @@ final PageModel resetPassword = PageModel(
       controller: TextEditingController(),
       label: 'Codigo',
       textInputType: TextInputType.text,
+      validator: (value) {
+        return codeValidator(value);
+      },
     ),
     FieldModel(
-        controller: TextEditingController(),
-        label: 'Senha',
-        textInputType: TextInputType.text,
-        passwordField: true,
-        validator: (value) {
-          return passValidator(value);
-        },
-        onChanged: (value) {}),
-    FieldModel(
-      controller: TextEditingController(),
-      label: 'Confirmar Senha',
-      textInputType: TextInputType.text,
+      label: 'Senha',
       passwordField: true,
+      controller: TextEditingController(),
+      textInputType: TextInputType.text,
       validator: (value) {
         return passValidator(value);
       },
+      onChanged: (String value) {},
+    ),
+    FieldModel(
+      label: 'Confirmar Senha',
+      passwordField: true,
+      textInputType: TextInputType.text,
+      controller: TextEditingController(),
+      validator: (value) {
+        return passValidator(value);
+      },
+      onChanged: (value) {},
     ),
   ],
 );
@@ -76,6 +81,18 @@ passValidator(String? value) {
 
   if (!regex.hasMatch(value)) {
     return 'Por favor, entre com uma senha válida';
+  }
+
+  return null;
+}
+
+codeValidator(String? value) {
+  if (value!.isEmpty) {
+    return 'Por favor, digite o códgio de restauração.';
+  }
+
+  if (value.length != 5) {
+    return 'Código inválido!';
   }
 
   return null;
