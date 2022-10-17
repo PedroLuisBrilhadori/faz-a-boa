@@ -13,7 +13,7 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/login', module: LoginModule()),
-    ModuleRoute('/', module: ResetPasswordModule()),
     ModuleRoute('/registration', module: RegistrationModule()),
+    ModuleRoute('/', module: ResetPasswordModule()),
   ];
 }

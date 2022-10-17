@@ -1,17 +1,17 @@
+import 'package:faz_a_boa/app/modules/reset_password/forms/pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
-import 'package:faz_a_boa/app/modules/password_reset/pages.dart';
 
-class PasswordReset extends StatefulWidget {
-  const PasswordReset({super.key});
+class ResetPasswordForms extends StatefulWidget {
+  const ResetPasswordForms({super.key});
 
   @override
-  State<PasswordReset> createState() => _PasswordResetState();
+  State<ResetPasswordForms> createState() => ResetPasswordFormsState();
 }
 
-class _PasswordResetState extends State<PasswordReset> {
+class ResetPasswordFormsState extends State<ResetPasswordForms> {
   bool emailSent = false;
 
   final formkey = GlobalKey<FormState>();
