@@ -1,0 +1,36 @@
+{
+  "stations": [
+    {
+      "id": "1",
+      "name": "Posto Ipiranga",
+      "addres": "R. 1234",
+      "image": "lib/assets/ipiranga.png",
+      "rate": 4.0,
+      "distance": 11
+    },
+    {
+      "id": "2",
+      "name": "Posto Shell",
+      "addres": "R. 12312",
+      "image": "lib/assets/shell.png",
+      "rate": 4.0,
+      "distance": 11
+    },
+    {
+      "id": "1",
+      "name": "Posto Juninho",
+      "addres": "R. 41234",
+      "image": "lib/assets/juninho.png",
+      "rate": 5.0,
+      "distance": 11
+    },
+    {
+      "id": "1",
+      "name": "Posto Ipiranga",
+      "addres": "R. 1234",
+      "image": "lib/assets/ipiranga.png",
+      "rate": 4.0,
+      "distance": 11
+    }
+  ]
+}
