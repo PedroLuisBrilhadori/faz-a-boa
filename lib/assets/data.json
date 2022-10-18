@@ -5,6 +5,7 @@
       "name": "Posto Ipiranga",
       "address": "R. 1234",
       "image": "lib/assets/ipiranga.png",
+      "cover": "lib/assets/posto-cover.png",
       "rate": 4.0,
       "distance": 11
     },
@@ -13,6 +14,7 @@
       "name": "Posto Shell",
       "address": "R. 12312",
       "image": "lib/assets/shell.png",
+      "cover": "lib/assets/posto-cover.png",
       "rate": 4.0,
       "distance": 11
     },
@@ -21,6 +23,7 @@
       "name": "Posto Juninho",
       "address": "R. 41234",
       "image": "lib/assets/juninho.png",
+      "cover": "lib/assets/posto-cover.png",
       "rate": 5.0,
       "distance": 11
     },
@@ -29,6 +32,7 @@
       "name": "Posto Juninho",
       "address": "R. 41234",
       "image": "lib/assets/juninho.png",
+      "cover": "lib/assets/posto-cover.png",
       "rate": 5.0,
       "distance": 11
     },
@@ -37,6 +41,7 @@
       "name": "Posto Juninho",
       "address": "R. 41234",
       "image": "lib/assets/juninho.png",
+      "cover": "lib/assets/posto-cover.png",
       "rate": 5.0,
       "distance": 11
     },
@@ -45,6 +50,7 @@
       "name": "Posto Ipiranga",
       "address": "R. 1234",
       "image": "lib/assets/ipiranga.png",
+      "cover": "lib/assets/posto-cover.png",
       "rate": 4.0,
       "distance": 11
     }

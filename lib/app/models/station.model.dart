@@ -1,17 +1,19 @@
 class Station {
   String id;
   String name;
-  String address;
-  String image;
   double rate;
+  String image;
+  String cover;
+  String address;
   double distance;
 
   Station({
     required this.id,
     required this.name,
-    required this.address,
-    required this.image,
     required this.rate,
+    required this.cover,
+    required this.image,
+    required this.address,
     required this.distance,
   });
 
@@ -23,6 +25,7 @@ class Station {
       image: json['image'],
       rate: json['rate'],
       distance: json['distance'],
+      cover: json['cover'],
     );
   }
 }

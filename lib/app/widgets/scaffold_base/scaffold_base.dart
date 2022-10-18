@@ -6,13 +6,15 @@ class ScaffoldBase extends StatelessWidget {
   final Widget child;
   final bool navigationBar;
   final bool configDrawer;
+  final NavigationIndex navigationIndex;
 
-  const ScaffoldBase({
-    Key? key,
-    required this.child,
-    this.navigationBar = false,
-    this.configDrawer = false,
-  }) : super(key: key);
+  const ScaffoldBase(
+      {Key? key,
+      required this.child,
+      this.navigationBar = false,
+      this.configDrawer = false,
+      this.navigationIndex = NavigationIndex.home})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,9 @@ class ScaffoldBase extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(child: child),
-      bottomNavigationBar: navigationBar ? const FZBNavigationBar() : null,
+      bottomNavigationBar: navigationBar
+          ? FZBNavigationBar(navigationIndex: navigationIndex)
+          : null,
       endDrawer: configDrawer ? const ConfigDrawer() : null,
     );
   }

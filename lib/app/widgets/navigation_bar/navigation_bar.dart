@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
+enum NavigationIndex {
+  search,
+  home,
+  map,
+}
+
 class FZBNavigationBar extends StatefulWidget {
-  const FZBNavigationBar({Key? key}) : super(key: key);
+  final NavigationIndex navigationIndex;
+
+  const FZBNavigationBar(
+      {Key? key, this.navigationIndex = NavigationIndex.home})
+      : super(key: key);
 
   @override
   State<FZBNavigationBar> createState() => _FZBNavigationBarState();
@@ -9,6 +19,13 @@ class FZBNavigationBar extends StatefulWidget {
 
 class _FZBNavigationBarState extends State<FZBNavigationBar> {
   int _selectedIndex = 1;
+
+  @override
+  void initState() {
+    _selectedIndex = widget.navigationIndex.index;
+
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     setState(() {

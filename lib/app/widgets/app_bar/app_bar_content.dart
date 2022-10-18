@@ -4,7 +4,13 @@ import 'package:faz_a_boa/app/widgets/app_bar/app_bar_icon.dart';
 
 class AppbarContent extends StatefulWidget {
   final String title;
-  const AppbarContent(this.title, {Key? key}) : super(key: key);
+  final String? subTitle;
+
+  const AppbarContent({
+    Key? key,
+    required this.title,
+    this.subTitle,
+  }) : super(key: key);
 
   @override
   State<AppbarContent> createState() => _AppbarContentState();
@@ -20,12 +26,17 @@ class _AppbarContentState extends State<AppbarContent> {
         mainAxisSize: MainAxisSize.max,
         children: [
           homeButton(),
-          Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+          Column(
+            children: [
+              Text(
+                widget.title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subTitle()
+            ],
           ),
           configButton()
         ],
@@ -33,17 +44,32 @@ class _AppbarContentState extends State<AppbarContent> {
     );
   }
 
+  Widget subTitle() {
+    if (widget.subTitle is String) {
+      return Text(
+        widget.subTitle!,
+        style: const TextStyle(
+          fontSize: 10,
+          fontWeight: FontWeight.w500,
+        ),
+      );
+    }
+
+    return Container();
+  }
+
   Widget homeButton() {
     return AppBarIconWidget(
-        const BorderRadius.only(
-          topRight: Radius.circular(12.0),
-          bottomRight: Radius.circular(12.0),
-        ),
-        IconButton(
-          icon: const Icon(Icons.person_outline),
-          color: Colors.white,
-          onPressed: () {},
-        ));
+      const BorderRadius.only(
+        topRight: Radius.circular(12.0),
+        bottomRight: Radius.circular(12.0),
+      ),
+      IconButton(
+        icon: const Icon(Icons.person_outline),
+        color: Colors.white,
+        onPressed: () {},
+      ),
+    );
   }
 
   Widget configButton() {
