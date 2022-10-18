@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/modules/station/station.module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:faz_a_boa/app/modules/login/login.module.dart';
@@ -11,7 +12,8 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute('/', module: HomeModule()),
+    ModuleRoute('/home', module: HomeModule()),
+    ModuleRoute('/', module: StationModule()),
     ModuleRoute('/login', module: LoginModule()),
     ModuleRoute('/registration', module: RegistrationModule()),
     ModuleRoute('/reset-password', module: ResetPasswordModule()),
