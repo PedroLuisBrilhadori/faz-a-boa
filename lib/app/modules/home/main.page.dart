@@ -1,36 +1,13 @@
+import 'package:faz_a_boa/app/models/station.model.dart';
+import 'package:faz_a_boa/app/services/stations.service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/app_bar/app_bar.dart';
 import 'package:faz_a_boa/app/widgets/card/card.dart';
-import 'package:faz_a_boa/app/widgets/card/model/card_data.model.dart';
 import 'package:faz_a_boa/app/widgets/chips/list_chips.dart';
 import 'package:faz_a_boa/app/widgets/chips/model/chips.model.dart';
 import 'package:faz_a_boa/app/widgets/drawer/config_drawer.dart';
 import 'package:faz_a_boa/app/widgets/navigation_bar/navigation_bar.dart';
-
-List<CardData> stations = [
-  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 4.0, 11),
-  CardData('Posto Shell', 'R. 2341', 'lib/assets/shell.png', 5, 10),
-  CardData('Posto Juninho', 'R. 1111', 'lib/assets/juninho.png', 3, 6),
-  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 1, 5),
-  CardData('Posto Ipiranga', 'R. 1234', 'lib/assets/ipiranga.png', 3, 3),
-];
-
-List<Widget> appList = [
-  CardWidget(stations[0]),
-  CardWidget(stations[1]),
-  CardWidget(stations[2]),
-  CardWidget(stations[3]),
-  CardWidget(stations[4]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-  CardWidget(stations[0]),
-];
 
 List<ChipModel> chipsList = [
   ChipModel(label: 'Ordenar'),
@@ -65,15 +42,49 @@ class AppColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Expanded(
-        flex: 1,
-        child: FZBAppBar(
-          title: 'Postos',
-          child: ChipsListWidget(chipsList: chipsList),
+    return Column(
+      children: [
+        Expanded(
+          flex: 1,
+          child: FZBAppBar(
+            title: 'Postos',
+            child: ChipsListWidget(chipsList: chipsList),
+          ),
         ),
-      ),
-      Flexible(flex: 5, child: ListView(children: appList)),
-    ]);
+        Flexible(
+          flex: 5,
+          child: FutureBuilder<List<Station>>(
+            future: StationService().getItems(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text('Não foi possível exibir os dados'),
+                );
+              }
+
+              if (!snapshot.hasData) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              final stations = snapshot.data;
+
+              return ListView.builder(
+                itemCount: stations!.length,
+                itemBuilder: (context, index) {
+                  return CardWidget(
+                    id: stations[index].id,
+                    title: stations[index].name,
+                    address: stations[index].address,
+                    distance: stations[index].distance,
+                    image: stations[index].image,
+                    rate: stations[index].rate,
+                  );
+                },
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 }

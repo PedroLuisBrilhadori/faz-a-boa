@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "Posto Ipiranga",
-      "addres": "R. 1234",
+      "address": "R. 1234",
       "image": "lib/assets/ipiranga.png",
       "rate": 4.0,
       "distance": 11
@@ -11,23 +11,39 @@
     {
       "id": "2",
       "name": "Posto Shell",
-      "addres": "R. 12312",
+      "address": "R. 12312",
       "image": "lib/assets/shell.png",
       "rate": 4.0,
       "distance": 11
     },
     {
-      "id": "1",
+      "id": "3",
       "name": "Posto Juninho",
-      "addres": "R. 41234",
+      "address": "R. 41234",
       "image": "lib/assets/juninho.png",
       "rate": 5.0,
       "distance": 11
     },
     {
-      "id": "1",
+      "id": "4",
+      "name": "Posto Juninho",
+      "address": "R. 41234",
+      "image": "lib/assets/juninho.png",
+      "rate": 5.0,
+      "distance": 11
+    },
+    {
+      "id": "5",
+      "name": "Posto Juninho",
+      "address": "R. 41234",
+      "image": "lib/assets/juninho.png",
+      "rate": 5.0,
+      "distance": 11
+    },
+    {
+      "id": "6",
       "name": "Posto Ipiranga",
-      "addres": "R. 1234",
+      "address": "R. 1234",
       "image": "lib/assets/ipiranga.png",
       "rate": 4.0,
       "distance": 11
