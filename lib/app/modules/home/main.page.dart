@@ -6,6 +6,7 @@ import 'package:faz_a_boa/app/widgets/scaffold_base/scaffold_base.dart';
 import 'package:faz_a_boa/app/widgets/app_bar/app_bar.dart';
 import 'package:faz_a_boa/app/widgets/card/card.dart';
 import 'package:faz_a_boa/app/widgets/chips/model/chips.model.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 List<ChipModel> chipsList = [
   ChipModel(label: 'Ordenar'),
@@ -57,13 +58,15 @@ class _MainScreenState extends State<MainScreen> {
                 return ListView.builder(
                   itemCount: stations!.length,
                   itemBuilder: (context, index) {
+                    final id = stations[index].id;
                     return CardWidget(
-                      id: stations[index].id,
+                      id: id,
                       title: stations[index].name,
                       address: stations[index].address,
                       distance: stations[index].distance,
                       image: stations[index].image,
                       rate: stations[index].rate,
+                      onTap: () => Modular.to.navigate('/station/$id'),
                     );
                   },
                 );
