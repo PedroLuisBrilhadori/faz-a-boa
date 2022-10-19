@@ -10,17 +10,21 @@ class ChipsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(flex: 1, child: chipList(chipsList));
+    return Flexible(flex: 1, child: chipList(chipsList));
   }
 
   Widget chipList(List<ChipModel> chips) {
-    return ListView.builder(
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 20, maxHeight: 300),
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: chips.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
               margin: const EdgeInsets.fromLTRB(2.5, 0, 2.5, 0),
               child: FZBChip(label: chips[index].label));
-        });
+        },
+      ),
+    );
   }
 }
