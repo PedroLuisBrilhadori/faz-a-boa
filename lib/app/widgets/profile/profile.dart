@@ -13,13 +13,16 @@ class ProfilePhotos extends StatelessWidget {
   Widget build(BuildContext context) {
     final top = coverHeight - profileHeight / 2;
 
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.center,
-      children: [
-        coverImage(),
-        Positioned(top: top, child: avatarImage()),
-      ],
+    return Container(
+      margin: EdgeInsets.only(bottom: 20 + (profileHeight / 2)),
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: [
+          coverImage(),
+          Positioned(top: top, child: avatarImage()),
+        ],
+      ),
     );
   }
 

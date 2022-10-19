@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/widgets/prices/prices.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/models/station.model.dart';
@@ -20,9 +21,14 @@ class StationScreen extends StatelessWidget {
         future: StationService().getItem(id),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-              child: Text(
-                  'Um erro inesperado aconteceu, tente novamente mais tarde.'),
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                    'Um erro inesperado aconteceu, tente novamente mais tarde.'),
+                Text(snapshot.error.toString()),
+              ],
             );
           }
           if (!snapshot.hasData) {
@@ -40,6 +46,9 @@ class StationScreen extends StatelessWidget {
                   image: station.image,
                   cover: station.cover,
                 ),
+                StationsPrices(
+                  fuels: station.fuels,
+                )
               ],
             ),
           );

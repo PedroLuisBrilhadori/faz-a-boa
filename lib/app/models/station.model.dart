@@ -1,3 +1,13 @@
+class Fuel {
+  String name;
+  double price;
+
+  Fuel({
+    required this.name,
+    required this.price,
+  });
+}
+
 class Station {
   String id;
   String name;
@@ -6,11 +16,13 @@ class Station {
   String cover;
   String address;
   double distance;
+  List<dynamic> fuels;
 
   Station({
     required this.id,
     required this.name,
     required this.rate,
+    required this.fuels,
     required this.cover,
     required this.image,
     required this.address,
@@ -26,6 +38,7 @@ class Station {
       rate: json['rate'],
       distance: json['distance'],
       cover: json['cover'],
+      fuels: json['fuels'],
     );
   }
 }
