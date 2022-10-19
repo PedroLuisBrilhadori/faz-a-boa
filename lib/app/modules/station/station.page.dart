@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/widgets/alert/alert.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/button/button.dart';
@@ -8,10 +9,20 @@ import 'package:faz_a_boa/app/widgets/app_content/app_content.dart';
 import 'package:faz_a_boa/app/widgets/profile/profile.dart';
 import 'package:faz_a_boa/app/widgets/scaffold_base/scaffold_base.dart';
 
-class StationScreen extends StatelessWidget {
+class StationScreen extends StatefulWidget {
   final String id;
 
-  const StationScreen({super.key, this.id = '1'});
+  const StationScreen({
+    super.key,
+    required this.id,
+  });
+
+  @override
+  State<StationScreen> createState() => _StationScreenState();
+}
+
+class _StationScreenState extends State<StationScreen> {
+  bool fiscalSent = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +30,7 @@ class StationScreen extends StatelessWidget {
       navigationBar: true,
       configDrawer: true,
       child: FutureBuilder<Station>(
-        future: StationService().getItem(id),
+        future: StationService().getItem(widget.id),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Column(
@@ -76,23 +87,127 @@ class StationScreen extends StatelessWidget {
                 color: Colors.green.shade700,
                 textColor: Colors.white,
                 fontSize: 16,
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return ratingDialog();
+                    },
+                  );
+                },
               ),
             ),
-            SizedBox(
-              width: 150,
-              height: 40,
-              child: ButtonApp(
-                label: 'Enviar Nota Fiscal',
-                color: Colors.blue.shade700,
-                textColor: Colors.white,
-                fontSize: 16,
-                onPressed: () {},
-              ),
-            ),
+            secondButton(),
           ],
         ),
       ),
+    );
+  }
+
+  secondButton() {
+    if (!fiscalSent) {
+      return SizedBox(
+        width: 150,
+        height: 40,
+        child: ButtonApp(
+          label: 'Enviar Nota Fiscal',
+          color: Colors.blue.shade700,
+          textColor: Colors.white,
+          fontSize: 16,
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return fiscalDialog();
+              },
+            ).then((value) {
+              if (value == 'ok') {
+                setState(() {
+                  fiscalSent = true;
+                });
+              }
+            });
+          },
+        ),
+      );
+    }
+
+    return SizedBox(
+      width: 150,
+      height: 40,
+      child: ButtonApp(
+        label: 'Compartilhar',
+        color: Colors.blue.shade700,
+        textColor: Colors.white,
+        fontSize: 16,
+        onPressed: () {},
+      ),
+    );
+  }
+
+  Widget fiscalDialog() {
+    return AlertApp(
+      title: 'Enviar Nota Fiscal',
+      message:
+          'Você pode enviar uma foto da sua nota Fiscal. Isso nos ajudar a sempre manter os preços atuallizados.',
+      content: Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.file_upload_outlined),
+            Text('Escolher foto'),
+          ],
+        ),
+      ),
+      actions: [
+        ButtonApp(
+          fontSize: 16,
+          label: 'Ok',
+          color: Colors.green.shade700,
+          textColor: Colors.white,
+          onPressed: () => Navigator.pop(context, 'ok'),
+        ),
+        ButtonApp(
+          fontSize: 16,
+          label: 'Voltar',
+          color: Colors.red.shade700,
+          textColor: Colors.white,
+          onPressed: () => Navigator.pop(context, 'voltar'),
+        ),
+      ],
+    );
+  }
+
+  Widget ratingDialog() {
+    return AlertApp(
+      title: 'Avaliar',
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(Icons.star_outline_rounded),
+          Icon(Icons.star_outline_rounded),
+          Icon(Icons.star_outline_rounded),
+          Icon(Icons.star_outline_rounded),
+          Icon(Icons.star_outline_rounded),
+        ],
+      ),
+      actions: [
+        ButtonApp(
+          fontSize: 16,
+          label: 'Ok',
+          color: Colors.green.shade700,
+          textColor: Colors.white,
+          onPressed: () => Navigator.pop(context, 'ok'),
+        ),
+        ButtonApp(
+          fontSize: 16,
+          label: 'Voltar',
+          color: Colors.red.shade700,
+          textColor: Colors.white,
+          onPressed: () => Navigator.pop(context, 'voltar'),
+        ),
+      ],
     );
   }
 }
