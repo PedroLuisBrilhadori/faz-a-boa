@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -81,8 +82,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 7.0,
                 ),
-                connectWithButton(Buttons.FacebookNew, 'Facebook'),
-                connectWithButton(Buttons.Google, 'Google'),
+                connectWithButton(
+                  button: Buttons.FacebookNew,
+                  label: 'Facebook',
+                  onPressed: () => Modular.to.navigate('/home'),
+                ),
+                connectWithButton(
+                  button: Buttons.Google,
+                  label: 'Google',
+                  onPressed: () => Modular.to.navigate('/home'),
+                ),
                 const SizedBox(height: 15.0),
                 RichText(
                   text: TextSpan(
@@ -90,12 +99,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontSize: 17,
                       color: Colors.grey[700],
                     ),
-                    children: const <TextSpan>[
-                      TextSpan(text: 'Não tem uma conta?'),
+                    children: <TextSpan>[
+                      const TextSpan(text: 'Não tem uma conta?'),
                       TextSpan(
-                        text: ' Crie agora!',
-                        style: TextStyle(color: Colors.black),
-                      ),
+                          text: ' Crie agora!',
+                          style: const TextStyle(color: Colors.black),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Modular.to.navigate('/registration');
+                            }),
                     ],
                   ),
                 ),

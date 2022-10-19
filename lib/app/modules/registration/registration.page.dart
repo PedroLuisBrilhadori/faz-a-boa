@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:faz_a_boa/app/modules/login/components.dart';
 
@@ -61,7 +62,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                loginButton(label: 'Cadastrar', context: context),
+                loginButton(
+                    label: 'Cadastrar',
+                    context: context,
+                    onPressed: () => Modular.to.navigate('/home')),
                 const SizedBox(
                   height: 25.0,
                 ),
@@ -72,8 +76,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 const SizedBox(
                   height: 7.0,
                 ),
-                connectWithButton(Buttons.FacebookNew, 'Facebook'),
-                connectWithButton(Buttons.Google, 'Google'),
+                connectWithButton(
+                  button: Buttons.FacebookNew,
+                  label: 'Facebook',
+                  onPressed: () => Modular.to.navigate('/home'),
+                ),
+                connectWithButton(
+                    button: Buttons.Google,
+                    label: 'Google',
+                    onPressed: () => Modular.to.navigate('/home')),
               ],
             ),
           ],
