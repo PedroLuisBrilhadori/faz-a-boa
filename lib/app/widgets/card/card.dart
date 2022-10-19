@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/card/card_info.dart';
-import 'package:faz_a_boa/app/widgets/card/model/card_data.model.dart';
 import 'package:faz_a_boa/app/widgets/card/photo_rate.dart';
 
 class CardWidget extends StatelessWidget {
-  final CardData cardData;
+  final String id;
+  final String title;
+  final String address;
+  final String image;
+  final double rate;
+  final double distance;
 
-  const CardWidget(this.cardData, {Key? key}) : super(key: key);
+  const CardWidget({
+    Key? key,
+    required this.id,
+    required this.title,
+    required this.address,
+    required this.distance,
+    required this.image,
+    required this.rate,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +35,8 @@ class CardWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            PhotoRateWidget(cardData.rate, cardData.image),
-            CardInfo(cardData.title, cardData.address, cardData.distance),
+            PhotoRateWidget(rate, image),
+            CardInfo(title, address, distance),
           ],
         ),
       ),

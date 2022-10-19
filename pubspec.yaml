@@ -36,7 +36,6 @@ dependencies:
   flutter_modular: ^5.0.3
   flutter_triple: ^1.2.8-dev.1
   flutter_signin_button: ^2.0.0
-  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

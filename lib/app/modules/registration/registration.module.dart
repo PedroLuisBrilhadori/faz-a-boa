@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:faz_a_boa/app/modules/registration/registration.page.dart';
 
 class RegistrationModule extends Module {

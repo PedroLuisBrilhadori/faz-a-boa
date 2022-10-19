@@ -1,0 +1,94 @@
+{
+  "stations": [
+    {
+      "id": "1",
+      "name": "Posto Ipiranga",
+      "address": "R. 1234",
+      "image": "lib/assets/ipiranga.png",
+      "cover": "lib/assets/posto-cover.png",
+      "rate": 4.0,
+      "distance": 11,
+      "fuels": [
+        { "name": "Etanol", "price": 3.9 },
+        { "name": "Gasolina", "price": 5.9 },
+        { "name": "Gasolina Aditivada", "price": 5.9 },
+        { "name": "Disel", "price": 7.018 }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Posto Shell",
+      "address": "R. 12312",
+      "image": "lib/assets/shell.png",
+      "cover": "lib/assets/posto-cover.png",
+      "rate": 4.0,
+      "distance": 11,
+      "fuels": [
+        { "name": "Etanol", "price": 3.9 },
+        { "name": "Gasolina", "price": 5.9 },
+        { "name": "Gasolina Aditivada", "price": 5.9 },
+        { "name": "Disel", "price": 7.0 }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Posto Juninho",
+      "address": "R. 41234",
+      "image": "lib/assets/juninho.png",
+      "cover": "lib/assets/posto-cover.png",
+      "rate": 5.0,
+      "distance": 11,
+      "fuels": [
+        { "name": "Etanol", "price": 3.9 },
+        { "name": "Gasolina", "price": 5.9 },
+        { "name": "Gasolina Aditivada", "price": 5.9 },
+        { "name": "Disel", "price": 7.0 }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Posto Juninho",
+      "address": "R. 41234",
+      "image": "lib/assets/juninho.png",
+      "cover": "lib/assets/posto-cover.png",
+      "rate": 5.0,
+      "distance": 11,
+      "fuels": [
+        { "name": "Etanol", "price": 3.9 },
+        { "name": "Gasolina", "price": 5.9 },
+        { "name": "Gasolina Aditivada", "price": 5.9 },
+        { "name": "Disel", "price": 7.0 }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Posto Juninho",
+      "address": "R. 41234",
+      "image": "lib/assets/juninho.png",
+      "cover": "lib/assets/posto-cover.png",
+      "rate": 5.0,
+      "distance": 11,
+      "fuels": [
+        { "name": "Etanol", "price": 3.9 },
+        { "name": "Gasolina", "price": 5.9 },
+        { "name": "Gasolina Aditivada", "price": 5.9 },
+        { "name": "Disel", "price": 7.0 }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Posto Ipiranga",
+      "address": "R. 1234",
+      "image": "lib/assets/ipiranga.png",
+      "cover": "lib/assets/posto-cover.png",
+      "rate": 4.0,
+      "distance": 11,
+      "fuels": [
+        { "name": "Etanol", "price": 3.9 },
+        { "name": "Gasolina", "price": 5.9 },
+        { "name": "Gasolina Aditivada", "price": 5.9 },
+        { "name": "Disel", "price": 7.0 }
+      ]
+    }
+  ]
+}
