@@ -36,7 +36,7 @@ class _SuccessFulScreenState extends State<SuccessFulScreen> {
             //BUTTON
             Column(
               children: [
-                loginButton('OK', context),
+                loginButton(label: 'OK', context: context),
               ],
             ),
           ],

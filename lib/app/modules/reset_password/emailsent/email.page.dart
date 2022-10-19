@@ -41,7 +41,7 @@ class _EmailScreenState extends State<EmailScreen> {
             //BUTTON
             Column(
               children: [
-                loginButton('OK', context),
+                loginButton(label: 'OK', context: context),
               ],
             ),
           ],

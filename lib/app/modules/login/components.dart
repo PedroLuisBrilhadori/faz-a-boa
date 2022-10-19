@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-Widget loginButton(String label, BuildContext context) {
+Widget loginButton(
+    {required String label,
+    required BuildContext context,
+    void Function()? onPressed}) {
   final double screenWidthSize = MediaQuery.of(context).size.width;
   return Container(
       margin: const EdgeInsets.only(top: 30),
@@ -10,11 +13,11 @@ Widget loginButton(String label, BuildContext context) {
         style: ElevatedButton.styleFrom(
             minimumSize: Size(screenWidthSize - 48, 50),
             backgroundColor: Colors.black),
+        onPressed: onPressed,
         child: Text(
           label,
           style: const TextStyle(fontSize: 18, color: Colors.white),
         ),
-        onPressed: () {},
       ));
 }
 

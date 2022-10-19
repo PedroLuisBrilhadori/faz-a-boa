@@ -61,7 +61,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                loginButton('Cadastrar', context),
+                loginButton(label: 'Cadastrar', context: context),
                 const SizedBox(
                   height: 25.0,
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:faz_a_boa/app/modules/login/components.dart';
 
@@ -60,7 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                   ],
                 ),
-                loginButton('Confirmar', context),
+                loginButton(
+                  label: 'Confirmar',
+                  context: context,
+                  onPressed: () => Modular.to.navigate('/home'),
+                ),
               ],
             ),
             //Third Column()

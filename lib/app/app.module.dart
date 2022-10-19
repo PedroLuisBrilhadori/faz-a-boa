@@ -16,8 +16,9 @@ class AppModule extends Module {
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/station', module: StationModule()),
     ModuleRoute('/login', module: LoginModule()),
+    ModuleRoute('/', module: LoginModule()),
     ModuleRoute('/registration', module: RegistrationModule()),
     ModuleRoute('/reset-password', module: ResetPasswordModule()),
-    ModuleRoute('/', module: AboutModule()),
+    ModuleRoute('/about', module: AboutModule()),
   ];
 }
