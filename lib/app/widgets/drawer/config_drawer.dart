@@ -1,5 +1,6 @@
 import 'package:faz_a_boa/app/widgets/drawer/model/config_options.model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class ConfigDrawer extends StatelessWidget {
   final List options = [
@@ -13,22 +14,22 @@ class ConfigDrawer extends StatelessWidget {
         label: "Notificações",
         color: Colors.black,
         icon: Icons.chat_bubble_outlined,
-        onTap: () => {}),
+        onTap: () => Modular.to.pop()),
     ConfigOption(
         label: 'GPS',
         color: Colors.black,
         icon: Icons.gps_fixed_outlined,
-        onTap: () => {}),
+        onTap: () => Modular.to.pop()),
     ConfigOption(
         label: 'Sobre',
         color: Colors.black,
         icon: Icons.info_outline,
-        onTap: () => {}),
+        onTap: () => Modular.to.pop()),
     ConfigOption(
         label: 'Sair',
         color: Colors.red,
         icon: Icons.exit_to_app_outlined,
-        onTap: () => {}),
+        onTap: () => {Modular.to.navigate('/')}),
   ];
 
   ConfigDrawer({super.key});
