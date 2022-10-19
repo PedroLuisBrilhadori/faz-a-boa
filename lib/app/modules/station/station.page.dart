@@ -1,6 +1,7 @@
-import 'package:faz_a_boa/app/widgets/prices/prices.dart';
 import 'package:flutter/material.dart';
 
+import 'package:faz_a_boa/app/widgets/button/button.dart';
+import 'package:faz_a_boa/app/widgets/prices/prices.dart';
 import 'package:faz_a_boa/app/models/station.model.dart';
 import 'package:faz_a_boa/app/services/stations.service.dart';
 import 'package:faz_a_boa/app/widgets/app_content/app_content.dart';
@@ -48,11 +49,49 @@ class StationScreen extends StatelessWidget {
                 ),
                 StationsPrices(
                   fuels: station.fuels,
-                )
+                ),
+                actionButtons(),
               ],
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget actionButtons() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40, right: 40),
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 150,
+              height: 40,
+              child: ButtonApp(
+                label: 'Avaliar',
+                color: Colors.green.shade700,
+                textColor: Colors.white,
+                fontSize: 16,
+                onPressed: () {},
+              ),
+            ),
+            SizedBox(
+              width: 150,
+              height: 40,
+              child: ButtonApp(
+                label: 'Enviar Nota Fiscal',
+                color: Colors.blue.shade700,
+                textColor: Colors.white,
+                fontSize: 16,
+                onPressed: () {},
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
