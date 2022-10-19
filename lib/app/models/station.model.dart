@@ -30,13 +30,19 @@ class Station {
   });
 
   factory Station.fromJson(Map<String, dynamic> json) {
+    double toDouble(number) {
+      if (number is double) return number;
+
+      return number.toDouble();
+    }
+
     return Station(
       id: json['id'],
       name: json['name'],
       address: json['address'],
       image: json['image'],
-      rate: json['rate'],
-      distance: json['distance'],
+      rate: toDouble(json['rate']),
+      distance: toDouble(json['distance']),
       cover: json['cover'],
       fuels: json['fuels'],
     );
