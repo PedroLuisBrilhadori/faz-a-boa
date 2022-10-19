@@ -1,6 +1,6 @@
-import 'package:faz_a_boa/app/widgets/alert/alert.dart';
 import 'package:flutter/material.dart';
 
+import 'package:faz_a_boa/app/widgets/alert/alert.dart';
 import 'package:faz_a_boa/app/widgets/button/button.dart';
 import 'package:faz_a_boa/app/widgets/prices/prices.dart';
 import 'package:faz_a_boa/app/models/station.model.dart';

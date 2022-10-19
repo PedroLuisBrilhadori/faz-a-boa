@@ -1,6 +1,6 @@
-import 'package:faz_a_boa/app/modules/station/station.module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:faz_a_boa/app/modules/station/station.module.dart';
 import 'package:faz_a_boa/app/modules/login/login.module.dart';
 import 'package:faz_a_boa/app/modules/reset_password/reset_passoword.module.dart';
 import 'package:faz_a_boa/app/modules/registration/registration.module.dart';

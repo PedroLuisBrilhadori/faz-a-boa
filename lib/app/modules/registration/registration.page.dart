@@ -1,7 +1,7 @@
-import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 
+import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:faz_a_boa/app/modules/login/components.dart';
 
 class RegistrationScreen extends StatefulWidget {

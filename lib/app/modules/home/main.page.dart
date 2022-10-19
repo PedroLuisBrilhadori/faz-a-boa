@@ -1,11 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:faz_a_boa/app/models/station.model.dart';
 import 'package:faz_a_boa/app/services/stations.service.dart';
 import 'package:faz_a_boa/app/widgets/scaffold_base/scaffold_base.dart';
-import 'package:flutter/material.dart';
-
 import 'package:faz_a_boa/app/widgets/app_bar/app_bar.dart';
 import 'package:faz_a_boa/app/widgets/card/card.dart';
-import 'package:faz_a_boa/app/widgets/chips/list_chips.dart';
 import 'package:faz_a_boa/app/widgets/chips/model/chips.model.dart';
 
 List<ChipModel> chipsList = [
