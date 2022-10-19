@@ -6,12 +6,14 @@ class FZBAppBar extends StatefulWidget {
   final String title;
   final Widget? child;
   final String? subTitle;
+  final void Function() onPressedConfig;
 
   const FZBAppBar({
     Key? key,
     this.child,
     this.subTitle,
     required this.title,
+    required this.onPressedConfig,
   }) : super(key: key);
 
   @override
@@ -40,6 +42,7 @@ class _FZBAppBarState extends State<FZBAppBar> {
           AppbarContent(
             title: widget.title,
             subTitle: widget.subTitle,
+            onPressedConfig: widget.onPressedConfig,
           ),
           widget.child != null ? widget.child! : Container()
         ],

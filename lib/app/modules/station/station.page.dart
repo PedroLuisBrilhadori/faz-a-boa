@@ -1,3 +1,5 @@
+import 'package:faz_a_boa/app/widgets/drawer/config_drawer.dart';
+import 'package:faz_a_boa/app/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/widgets/alert/alert.dart';
@@ -7,7 +9,6 @@ import 'package:faz_a_boa/app/models/station.model.dart';
 import 'package:faz_a_boa/app/services/stations.service.dart';
 import 'package:faz_a_boa/app/widgets/app_content/app_content.dart';
 import 'package:faz_a_boa/app/widgets/profile/profile.dart';
-import 'package:faz_a_boa/app/widgets/scaffold_base/scaffold_base.dart';
 
 class StationScreen extends StatefulWidget {
   final String id;
@@ -22,50 +23,60 @@ class StationScreen extends StatefulWidget {
 }
 
 class _StationScreenState extends State<StationScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   bool fiscalSent = false;
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldBase(
-      navigationBar: true,
-      configDrawer: true,
-      child: FutureBuilder<Station>(
-        future: StationService().getItem(widget.id),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                    'Um erro inesperado aconteceu, tente novamente mais tarde.'),
-                Text(snapshot.error.toString()),
-              ],
+    return Scaffold(
+      key: _key,
+      backgroundColor: Colors.white,
+      drawerEnableOpenDragGesture: false,
+      bottomNavigationBar:
+          const FZBNavigationBar(navigationIndex: NavigationIndex.home),
+      endDrawer: ConfigDrawer(),
+      body: SafeArea(
+        child: FutureBuilder<Station>(
+          future: StationService().getItem(widget.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                      'Um erro inesperado aconteceu, tente novamente mais tarde.'),
+                  Text(snapshot.error.toString()),
+                ],
+              );
+            }
+            if (!snapshot.hasData) {
+              return const Center(child: Text('Posto não encontrado'));
+            }
+
+            final station = snapshot.data;
+
+            return AppContent(
+              onPressedConfig: () {
+                _key.currentState!.openEndDrawer();
+              },
+              title: station!.name,
+              subTitle: station.address,
+              content: ListView(
+                children: [
+                  ProfilePhotos(
+                    image: station.image,
+                    cover: station.cover,
+                  ),
+                  StationsPrices(
+                    fuels: station.fuels,
+                  ),
+                  actionButtons(),
+                ],
+              ),
             );
-          }
-          if (!snapshot.hasData) {
-            return const Center(child: Text('Posto não encontrado'));
-          }
-
-          final station = snapshot.data;
-
-          return AppContent(
-            title: station!.name,
-            subTitle: station.address,
-            content: ListView(
-              children: [
-                ProfilePhotos(
-                  image: station.image,
-                  cover: station.cover,
-                ),
-                StationsPrices(
-                  fuels: station.fuels,
-                ),
-                actionButtons(),
-              ],
-            ),
-          );
-        },
+          },
+        ),
       ),
     );
   }

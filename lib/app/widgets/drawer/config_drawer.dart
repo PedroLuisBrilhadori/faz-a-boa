@@ -1,14 +1,7 @@
 import 'package:faz_a_boa/app/widgets/drawer/model/config_options.model.dart';
 import 'package:flutter/material.dart';
 
-class ConfigDrawer extends StatefulWidget {
-  const ConfigDrawer({Key? key}) : super(key: key);
-
-  @override
-  State<ConfigDrawer> createState() => _ConfigDrawerState();
-}
-
-class _ConfigDrawerState extends State<ConfigDrawer> {
+class ConfigDrawer extends StatelessWidget {
   final List options = [
     const DrawerHeader(
       decoration: BoxDecoration(
@@ -38,10 +31,13 @@ class _ConfigDrawerState extends State<ConfigDrawer> {
         onTap: () => {}),
   ];
 
+  ConfigDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView.builder(
+        padding: EdgeInsets.zero,
         itemCount: options.length,
         itemBuilder: (BuildContext context, int index) {
           if (options[index] is Widget) return options[index];

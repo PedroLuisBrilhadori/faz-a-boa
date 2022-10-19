@@ -18,17 +18,18 @@ class ScaffoldBase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (navigationBar || configDrawer) ? scaffoldApp() : scaffoldBase();
+    return (navigationBar && configDrawer) ? scaffoldApp() : scaffoldBase();
   }
 
   Widget scaffoldApp() {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawerEnableOpenDragGesture: true,
       body: SafeArea(child: child),
       bottomNavigationBar: navigationBar
           ? FZBNavigationBar(navigationIndex: navigationIndex)
           : null,
-      endDrawer: configDrawer ? const ConfigDrawer() : null,
+      endDrawer: configDrawer ? ConfigDrawer() : null,
     );
   }
 
