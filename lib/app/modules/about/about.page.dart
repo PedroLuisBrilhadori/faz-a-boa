@@ -24,11 +24,16 @@ class _AboutScreenState extends State<AboutScreen> {
                     Card(
                         margin: EdgeInsets.symmetric(vertical: 10.0),
                         child: ListTile(
-                            leading: Icon(Icons.info_outlined),
+                            leading: Icon(
+                              Icons.info_outlined,
+                              color: Colors.white,
+                            ),
+                            tileColor: Color.fromRGBO(25, 118, 210, 1),
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0.8, horizontal: 15.0),
                             title: Text('Sobre',
                                 style: TextStyle(
+                                    color: Colors.white,
                                     fontSize: 27,
                                     fontWeight: FontWeight.w700))))
                   ],
@@ -67,7 +72,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             textAlign: TextAlign.justify,
                           ),
                           subtitle: Text(
-                            'Fornecer informações acerca de postos de combustível nas proximidades da região, com o propósito de elencar estabelecimentos onde o usuário poderá ir, juntamente com dados sobre de seus preços, distância e avaliações.',
+                            'Fornecer informações acerca de postos de combustível nas proximidades da região, com o propósito de elencar estabelecimentos onde o usuário poderá ir, juntamente com dados sobre seus preços, distância e avaliações.',
                             textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 19),
                           ),
@@ -81,11 +86,16 @@ class _AboutScreenState extends State<AboutScreen> {
                     Card(
                         margin: EdgeInsets.symmetric(vertical: 10.0),
                         child: ListTile(
+                            leading: Icon(
+                              Icons.info_outlined,
+                              color: Colors.white,
+                            ),
+                            tileColor: Color.fromRGBO(25, 118, 210, 1),
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0.8, horizontal: 15.0),
-                            leading: Icon(Icons.group_outlined),
-                            title: Text('Desenvolvedores',
+                            title: Text('Sobre',
                                 style: TextStyle(
+                                    color: Colors.white,
                                     fontSize: 27,
                                     fontWeight: FontWeight.w700))))
                   ],
