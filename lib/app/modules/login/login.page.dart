@@ -53,9 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Esqueceu sua senha?',
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                    GestureDetector(
+                      child: const Text(
+                        'Esqueceu sua senha?',
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      ),
+                      onTap: () => Modular.to.navigate('/reset-password'),
                     ),
                     SizedBox(
                       width: screenWidth * 0.077,

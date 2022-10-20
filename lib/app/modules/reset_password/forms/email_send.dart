@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:faz_a_boa/app/modules/reset_password/forms/pages.dart';
 import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class ResetPasswordForm extends StatefulWidget {
-  const ResetPasswordForm({super.key});
+class EmailSendForm extends StatefulWidget {
+  const EmailSendForm({super.key});
 
   @override
-  State<ResetPasswordForm> createState() => ResetPasswordFormState();
+  State<EmailSendForm> createState() => EmailSendFormState();
 }
 
-class ResetPasswordFormState extends State<ResetPasswordForm> {
+class EmailSendFormState extends State<EmailSendForm> {
   bool emailSent = false;
 
   @override
   Widget build(BuildContext context) {
-    PageModel page = resetPassword;
+    PageModel page = sendCode;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -37,18 +37,20 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
                     children: [
                       const SizedBox(height: 90.0),
                       Button(
-                        label: 'Enviar',
-                        color: Colors.green,
-                        onPressed: () => {
-                          if (page.key.currentState!.validate())
-                            {Modular.to.navigate('/reset-password/successful')}
-                        },
-                      ),
+                          label: 'Enviar',
+                          color: Colors.green,
+                          onPressed: () => {
+                                if (page.key.currentState!.validate())
+                                  {
+                                    Modular.to
+                                        .navigate('/reset-password/email-sent')
+                                  }
+                              }),
                       const SizedBox(height: 17.0),
                       Button(
                         label: 'Voltar',
                         color: Colors.red,
-                        onPressed: () => {Modular.to.pop()},
+                        onPressed: () => Modular.to.pop(),
                       )
                     ],
                   ),
