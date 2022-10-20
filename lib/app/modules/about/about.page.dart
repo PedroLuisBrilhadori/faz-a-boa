@@ -96,7 +96,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             tileColor: Color.fromRGBO(25, 118, 210, 1),
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0.8, horizontal: 15.0),
-                            title: Text('Sobre',
+                            title: Text('Desenvolvedores',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 27,
