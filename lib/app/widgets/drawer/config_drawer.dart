@@ -24,7 +24,7 @@ class ConfigDrawer extends StatelessWidget {
         label: 'Sobre',
         color: Colors.black,
         icon: Icons.info_outline,
-        onTap: () => Modular.to.pop()),
+        onTap: () => Modular.to.navigate('/about')),
     ConfigOption(
         label: 'Sair',
         color: Colors.red,
