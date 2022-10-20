@@ -7,11 +7,13 @@ class AppContent extends StatelessWidget {
   final Widget content;
   final String? subTitle;
   final Widget? appBarChild;
+  final void Function() onPressedConfig;
 
   const AppContent({
     super.key,
     required this.title,
     required this.content,
+    required this.onPressedConfig,
     this.appBarChild,
     this.subTitle,
   });
@@ -23,6 +25,7 @@ class AppContent extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         FZBAppBar(
+          onPressedConfig: onPressedConfig,
           title: title,
           subTitle: subTitle,
           child: appBarChild is Widget ? appBarChild : Container(),

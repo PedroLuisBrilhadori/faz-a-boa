@@ -7,16 +7,19 @@ class PageModel {
   final String subTitle;
   final bool emailSended;
   final List<FieldModel> fields;
+  final GlobalKey<FormState> key;
 
   PageModel({
     required this.title,
     required this.subTitle,
     required this.emailSended,
     required this.fields,
+    required this.key,
   });
 }
 
 final PageModel sendCode = PageModel(
+  key: GlobalKey<FormState>(),
   title: 'Redefinir Senha',
   subTitle:
       'Esqueceu a senha? Digite seu e-mail abaixo para começarmos a redefinir.',
@@ -36,6 +39,7 @@ final PageModel sendCode = PageModel(
 );
 
 final PageModel resetPassword = PageModel(
+  key: GlobalKey<FormState>(),
   title: 'Redefinir Senha',
   subTitle:
       'Um e-mail com um código de confirmação foi enviado, insira o código e redifina sua senha!',

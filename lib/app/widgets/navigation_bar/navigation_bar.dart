@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 enum NavigationIndex {
   search,
@@ -30,6 +31,7 @@ class _FZBNavigationBarState extends State<FZBNavigationBar> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      Modular.to.navigate('/home');
     });
   }
 
@@ -57,10 +59,11 @@ class _FZBNavigationBarState extends State<FZBNavigationBar> {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.search), label: "Procurar"),
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home_outlined,
-                    ),
-                    label: "Início"),
+                  icon: Icon(
+                    Icons.home_outlined,
+                  ),
+                  label: "Início",
+                ),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.map_outlined,

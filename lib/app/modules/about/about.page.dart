@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/widgets/navigation_bar/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class AboutScreen extends StatefulWidget {
@@ -12,6 +13,8 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey.shade200,
+        bottomNavigationBar:
+            const FZBNavigationBar(navigationIndex: NavigationIndex.home),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),

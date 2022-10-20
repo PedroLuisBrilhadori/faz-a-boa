@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:faz_a_boa/app/widgets/header/header.dart';
 import 'package:faz_a_boa/app/modules/login/components.dart';
 import 'package:faz_a_boa/app/widgets/scaffold_base/scaffold_base.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class SuccessFulScreen extends StatefulWidget {
   const SuccessFulScreen({super.key});
@@ -36,7 +37,10 @@ class _SuccessFulScreenState extends State<SuccessFulScreen> {
             //BUTTON
             Column(
               children: [
-                loginButton('OK', context),
+                loginButton(
+                    label: 'OK',
+                    context: context,
+                    onPressed: () => Modular.to.navigate('/')),
               ],
             ),
           ],

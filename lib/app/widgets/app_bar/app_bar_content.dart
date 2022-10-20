@@ -5,10 +5,12 @@ import 'package:faz_a_boa/app/widgets/app_bar/app_bar_icon.dart';
 class AppbarContent extends StatefulWidget {
   final String title;
   final String? subTitle;
+  final void Function() onPressedConfig;
 
   const AppbarContent({
     Key? key,
     required this.title,
+    required this.onPressedConfig,
     this.subTitle,
   }) : super(key: key);
 
@@ -81,7 +83,7 @@ class _AppbarContentState extends State<AppbarContent> {
       IconButton(
         icon: const Icon(Icons.settings_outlined),
         color: Colors.white,
-        onPressed: () {},
+        onPressed: widget.onPressedConfig,
       ),
     );
   }
