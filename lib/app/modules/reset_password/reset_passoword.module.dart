@@ -11,6 +11,6 @@ class ResetPasswordModule extends Module {
     ChildRoute('/email-sent', child: (_, args) => const EmailScreen()),
     ChildRoute('/successful', child: (_, args) => const SuccessFulScreen()),
     ChildRoute('/reset', child: (_, args) => const ResetPasswordForm()),
-    ChildRoute('/', child: (_, args) => const EmailSendForm())
+    ChildRoute(Modular.initialRoute, child: (_, args) => const EmailSendForm())
   ];
 }

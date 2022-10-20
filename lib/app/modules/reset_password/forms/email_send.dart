@@ -50,7 +50,7 @@ class EmailSendFormState extends State<EmailSendForm> {
                       Button(
                         label: 'Voltar',
                         color: Colors.red,
-                        onPressed: () => Modular.to.pop(),
+                        onPressed: () => Modular.to.navigate('/'),
                       )
                     ],
                   ),

@@ -48,7 +48,8 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
                       Button(
                         label: 'Voltar',
                         color: Colors.red,
-                        onPressed: () => {Modular.to.pop()},
+                        onPressed: () =>
+                            {Modular.to.navigate('/reset-password/')},
                       )
                     ],
                   ),
