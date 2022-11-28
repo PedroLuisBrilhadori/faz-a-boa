@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/validators/email.validator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/validators/pass.validator.dart';
@@ -35,6 +36,7 @@ final PageModel registrationPage = PageModel(
       label: 'Email',
       controller: TextEditingController(),
       textInputType: TextInputType.text,
+      validator: (value) => emailValidator(value),
     ),
     FieldModel(
       label: 'Senha',
