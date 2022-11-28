@@ -78,24 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 60.0),
-                Text(
-                  'Ou continue com:',
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
-                ),
-                const SizedBox(
-                  height: 7.0,
-                ),
-                connectWithButton(
-                  button: Buttons.FacebookNew,
-                  label: 'Facebook',
-                  onPressed: () => Modular.to.navigate('/home'),
-                ),
-                connectWithButton(
-                  button: Buttons.Google,
-                  label: 'Google',
-                  onPressed: () => Modular.to.navigate('/home'),
-                ),
-                const SizedBox(height: 15.0),
                 RichText(
                   text: TextSpan(
                     style: TextStyle(

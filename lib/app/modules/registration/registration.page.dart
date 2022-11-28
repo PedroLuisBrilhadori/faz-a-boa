@@ -1,95 +1,165 @@
+import 'package:faz_a_boa/app/modules/login/login.controller.dart';
 import 'package:flutter/material.dart';
-
-import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:faz_a_boa/app/modules/login/components.dart';
+
+import 'package:faz_a_boa/app/modules/registration/pages.dart';
+import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
+import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
   @override
-  State<RegistrationScreen> createState() => _RegistrationScreenState();
+  State<RegistrationScreen> createState() => RegistrationScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
-  var name = TextEditingController();
-  var email = TextEditingController();
-  var password = TextEditingController();
-  var cpf = TextEditingController();
+class RegistrationScreenState extends State<RegistrationScreen> {
+  @override
+  Widget build(BuildContext context) {
+    PageModel page = registrationPage;
+
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: CustomScrollView(reverse: true, slivers: [
+          SliverFillRemaining(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 20, right: 20, top: 20, bottom: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  header(title: page.title, subTitle: page.subTitle),
+                  fields(fields: page.fields, key: page.key),
+                  //BUTTONS
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const SizedBox(height: 90.0),
+                      Button(
+                        label: 'Enviar',
+                        color: Colors.green,
+                        onPressed: () {
+                          if (page.key.currentState!.validate()) {
+                            String name = page.fields[0].controller.text;
+                            String email = page.fields[1].controller.text;
+                            String password = page.fields[2].controller.text;
+                            String cpf = page.fields[3].controller.text;
+
+                            LoginController().createAccount(
+                                context: context,
+                                email: email,
+                                password: password,
+                                name: name,
+                                cpf: cpf);
+
+                            Modular.to.navigate('/home');
+                          }
+                        },
+                      ),
+                      const SizedBox(height: 17.0),
+                      Button(
+                        label: 'Voltar',
+                        color: Colors.red,
+                        onPressed: () => {Modular.to.navigate('/')},
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ]),
+      ),
+    );
+  }
+
+  Widget header({
+    required String title,
+    required String subTitle,
+  }) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(title,
+              style:
+                  const TextStyle(fontSize: 27, fontWeight: FontWeight.w700)),
+          Text(subTitle, style: const TextStyle(fontSize: 19))
+        ]);
+  }
+
+  Widget fields(
+      {required List<FieldModel> fields, required GlobalKey<FormState> key}) {
+    return Form(
+      key: key,
+      autovalidateMode: AutovalidateMode.always,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          BodyFields(fields: fields),
+        ],
+      ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  final String label;
+  final Color color;
+  final dynamic onPressed;
+
+  const Button({
+    Key? key,
+    required this.label,
+    required this.color,
+    this.onPressed,
+  })  : assert(onPressed != null || onPressed is! void Function()),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            //HEADER
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                SizedBox(height: 120.0),
-                Text('Cadastro',
-                    style: TextStyle(fontSize: 27, fontWeight: FontWeight.w700))
-              ],
-            ),
-            //TEXT FIELDS
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 60.0),
-                FzTextField(
-                    label: 'Nome Completo',
-                    controller: name,
-                    textInputType: TextInputType.name),
-                const SizedBox(height: 5.0),
-                FzTextField(
-                    label: 'E-mail',
-                    controller: email,
-                    textInputType: TextInputType.emailAddress),
-                const SizedBox(height: 5.0),
-                FzTextField(
-                    label: 'CPF',
-                    controller: cpf,
-                    textInputType: TextInputType.number),
-                const SizedBox(height: 5.0),
-                FzTextField(label: 'Senha', controller: password),
-              ],
-            ),
-            //BUTTONS
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                loginButton(
-                    label: 'Cadastrar',
-                    context: context,
-                    onPressed: () => Modular.to.navigate('/home')),
-                const SizedBox(
-                  height: 25.0,
-                ),
-                Text(
-                  'Ou cadastre-se com:',
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
-                ),
-                const SizedBox(
-                  height: 7.0,
-                ),
-                connectWithButton(
-                  button: Buttons.FacebookNew,
-                  label: 'Facebook',
-                  onPressed: () => Modular.to.navigate('/home'),
-                ),
-                connectWithButton(
-                    button: Buttons.Google,
-                    label: 'Google',
-                    onPressed: () => Modular.to.navigate('/home')),
-              ],
-            ),
-          ],
-        ),
+    final double screenWidthSize = MediaQuery.of(context).size.width;
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          minimumSize: Size(screenWidthSize - 48, 55), backgroundColor: color),
+      onPressed: onPressed,
+      child: Text(
+        label,
+        style: const TextStyle(fontSize: 18, color: Colors.white),
       ),
     );
+  }
+}
+
+class BodyFields extends StatelessWidget {
+  final List<FieldModel> fields;
+  const BodyFields({Key? key, required this.fields}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: generateFields(),
+    );
+  }
+
+  List<Widget> generateFields() {
+    final List<Widget> widgetFields = [];
+    const EdgeInsetsGeometry margin = EdgeInsets.only(top: 10);
+
+    for (var field in fields) {
+      widgetFields.add(FzTextField(
+        label: field.label,
+        controller: field.controller,
+        marign: margin,
+        passwordField: field.passwordField,
+        validator: field.validator,
+        autovalidateMode: field.autovalidateMode,
+        onChanged: field.onChanged,
+      ));
+    }
+
+    return widgetFields;
   }
 }
