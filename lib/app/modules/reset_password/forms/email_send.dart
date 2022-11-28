@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/services/firebase.service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:faz_a_boa/app/modules/reset_password/forms/pages.dart';
@@ -42,8 +43,15 @@ class EmailSendFormState extends State<EmailSendForm> {
                           onPressed: () => {
                                 if (page.key.currentState!.validate())
                                   {
-                                    Modular.to
-                                        .navigate('/reset-password/email-sent')
+                                    FirebaseService()
+                                        .forgetPassword(
+                                          email: page.fields[0].controller.text,
+                                        )
+                                        .then(
+                                          (value) => Modular.to.navigate(
+                                            '/reset-password/email-sent',
+                                          ),
+                                        )
                                   }
                               }),
                       const SizedBox(height: 17.0),

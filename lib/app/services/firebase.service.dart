@@ -66,4 +66,10 @@ class FirebaseService {
 
     Modular.to.navigate('/login');
   }
+
+  Future<void> forgetPassword({
+    required String email,
+  }) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
 }

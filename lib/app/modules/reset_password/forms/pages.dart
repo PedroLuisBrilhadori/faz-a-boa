@@ -32,11 +32,6 @@ final PageModel sendCode = PageModel(
       label: 'Email',
       textInputType: TextInputType.emailAddress,
     ),
-    FieldModel(
-      controller: TextEditingController(),
-      label: 'CPF',
-      textInputType: TextInputType.number,
-    ),
   ],
 );
 
