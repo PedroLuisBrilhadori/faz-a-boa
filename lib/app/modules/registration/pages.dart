@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:faz_a_boa/app/validators/pass.validator.dart';
 import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 
 class PageModel {
@@ -52,17 +53,3 @@ final PageModel registrationPage = PageModel(
     )
   ],
 );
-
-passValidator(String? value) {
-  RegExp regex =
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-  if (value!.isEmpty) {
-    return 'Por favor, digite uma senha';
-  }
-
-  if (!regex.hasMatch(value)) {
-    return 'Por favor, entre com uma senha válida';
-  }
-
-  return null;
-}

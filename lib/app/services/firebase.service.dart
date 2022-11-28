@@ -2,9 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class LoginController {
+class FirebaseService {
   void createAccount({
-    required context,
     required String email,
     required String password,
     required String name,
@@ -34,5 +33,37 @@ class LoginController {
           break;
       }
     });
+  }
+
+  void login({
+    required String email,
+    required String password,
+  }) {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((res) {
+      Modular.to.navigate('/home');
+    }).catchError((e) {
+      switch (e.code) {
+        case 'user-not-found':
+          print('Usuário não encontrado.');
+          break;
+        case 'invalid-email':
+          print('Email é inválido.');
+          break;
+        case 'wrong-password':
+          print('Senha Incorreta.');
+          break;
+        default:
+          print(e.code.toString());
+          break;
+      }
+    });
+  }
+
+  void logout() {
+    FirebaseAuth.instance.signOut();
+
+    Modular.to.navigate('/login');
   }
 }

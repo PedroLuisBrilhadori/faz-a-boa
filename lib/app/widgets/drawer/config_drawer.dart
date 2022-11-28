@@ -1,3 +1,4 @@
+import 'package:faz_a_boa/app/services/firebase.service.dart';
 import 'package:faz_a_boa/app/widgets/drawer/model/config_options.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -26,10 +27,13 @@ class ConfigDrawer extends StatelessWidget {
         icon: Icons.info_outline,
         onTap: () => Modular.to.navigate('/about')),
     ConfigOption(
-        label: 'Sair',
-        color: Colors.red,
-        icon: Icons.exit_to_app_outlined,
-        onTap: () => {Modular.to.navigate('/')}),
+      label: 'Sair',
+      color: Colors.red,
+      icon: Icons.exit_to_app_outlined,
+      onTap: () => {
+        FirebaseService().logout(),
+      },
+    ),
   ];
 
   ConfigDrawer({super.key});

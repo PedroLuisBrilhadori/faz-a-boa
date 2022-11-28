@@ -1,9 +1,10 @@
+import 'package:faz_a_boa/app/services/firebase.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
+import 'package:faz_a_boa/app/validators/pass.validator.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:faz_a_boa/app/modules/login/components.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var login = TextEditingController();
-  var password = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +41,19 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 60.0),
                 FzTextField(
-                    label: 'Email',
-                    controller: login,
-                    textInputType: TextInputType.emailAddress),
+                  label: 'Email',
+                  controller: emailController,
+                  textInputType: TextInputType.emailAddress,
+                ),
                 const SizedBox(height: 5.0),
                 FzTextField(
-                    label: 'Senha',
-                    controller: password,
-                    textInputType: TextInputType.text),
+                  label: 'Senha',
+                  controller: passwordController,
+                  textInputType: TextInputType.text,
+                  passwordField: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) => passValidator(value),
+                ),
                 const SizedBox(height: 10.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -68,7 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 loginButton(
                   label: 'Confirmar',
                   context: context,
-                  onPressed: () => Modular.to.navigate('/home'),
+                  onPressed: () {
+                    String email = emailController.text;
+                    String password = passwordController.text;
+
+                    FirebaseService().login(email: email, password: password);
+                  },
                 ),
               ],
             ),

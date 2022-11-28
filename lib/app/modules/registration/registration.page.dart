@@ -1,7 +1,7 @@
-import 'package:faz_a_boa/app/modules/login/login.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:faz_a_boa/app/services/firebase.service.dart';
 import 'package:faz_a_boa/app/modules/registration/pages.dart';
 import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
@@ -47,14 +47,12 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                             String password = page.fields[2].controller.text;
                             String cpf = page.fields[3].controller.text;
 
-                            LoginController().createAccount(
-                                context: context,
-                                email: email,
-                                password: password,
-                                name: name,
-                                cpf: cpf);
-
-                            Modular.to.navigate('/home');
+                            FirebaseService().createAccount(
+                              email: email,
+                              password: password,
+                              name: name,
+                              cpf: cpf,
+                            );
                           }
                         },
                       ),
