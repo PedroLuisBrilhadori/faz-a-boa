@@ -7,16 +7,25 @@ class FirebaseService {
     required String email,
     required String password,
     required String name,
-    required String cpf,
+    String? cpf,
+    String? cnpj,
   }) {
+    String identifier = 'cnpj';
+    String? value = cnpj;
+
+    if (cnpj == null) {
+      identifier = 'cpf';
+      value = cpf;
+    }
+
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((res) {
       FirebaseFirestore.instance.collection('users').add({
         'uid': res.user!.uid.toString(),
         'name': name,
-        'cpf': cpf,
-        'email': email
+        'email': email,
+        identifier: value
       });
 
       Modular.to.navigate('/home');

@@ -43,6 +43,7 @@ class FzTextFieldState extends State<FzTextField> {
       margin: widget.marign,
       child: TextFormField(
         obscureText: isObscure,
+        keyboardType: widget.textInputType,
         autovalidateMode: widget.autovalidateMode,
         style: const TextStyle(fontSize: 22),
         controller: widget.controller,

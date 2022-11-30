@@ -30,12 +30,12 @@ final PageModel registrationPage = PageModel(
     FieldModel(
       controller: TextEditingController(),
       label: 'Nome Completo',
-      textInputType: TextInputType.text,
+      textInputType: TextInputType.name,
     ),
     FieldModel(
       label: 'Email',
       controller: TextEditingController(),
-      textInputType: TextInputType.text,
+      textInputType: TextInputType.emailAddress,
       validator: (value) => emailValidator(value),
     ),
     FieldModel(
@@ -50,6 +50,42 @@ final PageModel registrationPage = PageModel(
     ),
     FieldModel(
       label: 'CPF',
+      controller: TextEditingController(),
+      textInputType: TextInputType.number,
+    )
+  ],
+);
+
+final PageModel registrationOwnerPage = PageModel(
+  key: GlobalKey<FormState>(),
+  title: 'Realizar Cadastro',
+  subTitle:
+      'Preencha os campos para criar sua conta! \nSua senha deve conter no mínimo 8 caracteres, uma letra maiúscula e um caracter especial (!@#\$%&*)',
+  emailSended: true,
+  fields: [
+    FieldModel(
+      controller: TextEditingController(),
+      label: 'Nome Completo',
+      textInputType: TextInputType.name,
+    ),
+    FieldModel(
+      label: 'Email',
+      controller: TextEditingController(),
+      textInputType: TextInputType.emailAddress,
+      validator: (value) => emailValidator(value),
+    ),
+    FieldModel(
+      label: 'Senha',
+      passwordField: true,
+      textInputType: TextInputType.text,
+      controller: TextEditingController(),
+      validator: (value) {
+        return passValidator(value);
+      },
+      onChanged: (value) {},
+    ),
+    FieldModel(
+      label: 'CPNJ',
       controller: TextEditingController(),
       textInputType: TextInputType.number,
     )

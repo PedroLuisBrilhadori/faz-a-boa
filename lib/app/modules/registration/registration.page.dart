@@ -14,61 +14,93 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class RegistrationScreenState extends State<RegistrationScreen> {
+  bool stationOwner = false;
+
   @override
   Widget build(BuildContext context) {
-    PageModel page = registrationPage;
+    PageModel page = stationOwner ? registrationOwnerPage : registrationPage;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
-        child: CustomScrollView(reverse: true, slivers: [
-          SliverFillRemaining(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 20, right: 20, top: 20, bottom: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  header(title: page.title, subTitle: page.subTitle),
-                  fields(fields: page.fields, key: page.key),
-                  //BUTTONS
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const SizedBox(height: 90.0),
-                      Button(
-                        label: 'Enviar',
-                        color: Colors.green,
-                        onPressed: () {
-                          if (page.key.currentState!.validate()) {
-                            String name = page.fields[0].controller.text;
-                            String email = page.fields[1].controller.text;
-                            String password = page.fields[2].controller.text;
-                            String cpf = page.fields[3].controller.text;
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                header(title: page.title, subTitle: page.subTitle),
 
+                const SizedBox(height: 15),
+
+                Row(
+                  children: [
+                    const Text(
+                      'Proprietário de posto?',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Switch(
+                      value: stationOwner,
+                      onChanged: (value) {
+                        setState(() {
+                          stationOwner = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+
+                fields(fields: page.fields, key: page.key),
+                //BUTTONS
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const SizedBox(height: 90.0),
+                    Button(
+                      label: 'Enviar',
+                      color: Colors.green,
+                      onPressed: () {
+                        if (page.key.currentState!.validate()) {
+                          String name = page.fields[0].controller.text;
+                          String email = page.fields[1].controller.text;
+                          String password = page.fields[2].controller.text;
+                          String identifier = page.fields[3].controller.text;
+
+                          if (!stationOwner) {
                             FirebaseService().createAccount(
                               email: email,
                               password: password,
                               name: name,
-                              cpf: cpf,
+                              cpf: identifier,
                             );
+                            return;
                           }
-                        },
-                      ),
-                      const SizedBox(height: 17.0),
-                      Button(
-                        label: 'Voltar',
-                        color: Colors.red,
-                        onPressed: () => {Modular.to.navigate('/')},
-                      )
-                    ],
-                  ),
-                ],
-              ),
+
+                          FirebaseService().createAccount(
+                            email: email,
+                            password: password,
+                            name: name,
+                            cnpj: identifier,
+                          );
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 17.0),
+                    Button(
+                      label: 'Voltar',
+                      color: Colors.red,
+                      onPressed: () => {Modular.to.navigate('/')},
+                    )
+                  ],
+                ),
+              ],
             ),
           ),
-        ]),
+        ),
       ),
     );
   }
@@ -81,9 +113,13 @@ class RegistrationScreenState extends State<RegistrationScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(title,
-              style:
-                  const TextStyle(fontSize: 27, fontWeight: FontWeight.w700)),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 27,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           Text(subTitle, style: const TextStyle(fontSize: 19))
         ]);
   }
@@ -155,6 +191,7 @@ class BodyFields extends StatelessWidget {
         validator: field.validator,
         autovalidateMode: field.autovalidateMode,
         onChanged: field.onChanged,
+        textInputType: field.textInputType,
       ));
     }
 
