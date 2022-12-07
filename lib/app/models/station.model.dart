@@ -32,6 +32,7 @@ class Station {
   factory Station.fromJson(Map<String, dynamic> json, id) {
     double toDouble(number) {
       if (number is double) return number;
+      if (number is int) return number.toDouble();
 
       return double.parse(number);
     }
