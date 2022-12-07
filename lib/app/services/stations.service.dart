@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:faz_a_boa/app/models/station.model.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class StationService {
   Future<List<Station>> getItems() async {
@@ -23,8 +24,7 @@ class StationService {
   }
 
   Future addStation(CreateStation station) async {
-    print(station);
-    FirebaseFirestore.instance.collection('postos').doc().set({
+    await FirebaseFirestore.instance.collection('postos').doc().set({
       'name': station.name,
       'address': station.address,
       'cover': station.cover,
@@ -34,5 +34,7 @@ class StationService {
       'is_open': true,
       'rate': station.rate
     }).onError((error, stackTrace) => print(error));
+
+    Modular.to.navigate('/home');
   }
 }

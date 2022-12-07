@@ -46,6 +46,20 @@ final PageModel addStationPage = PageModel(
       label: 'Combustíveis',
       controller: TextEditingController(),
       textInputType: TextInputType.text,
+      validator: (value) => fuelsValidator(value),
     ),
   ],
 );
+
+fuelsValidator(String? value) {
+  RegExp regExp =
+      RegExp(r'^[a-zA-Z ]+ - [0-9-.|,]+(?:\ ; [a-zA-Z ]+ - [0-9-.|,]+)*$');
+
+  if (value!.isEmpty) {
+    return 'Por favor, digite os combustíveis';
+  }
+
+  if (!regExp.hasMatch(value)) {
+    return 'Por favor, siga o padrão "combustível - 4.00 ; combustível dois - 3.00"';
+  }
+}
