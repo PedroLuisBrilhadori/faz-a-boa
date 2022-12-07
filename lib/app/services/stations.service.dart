@@ -1,19 +1,22 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 
 import 'package:faz_a_boa/app/models/station.model.dart';
 
 class StationService {
   Future<List<Station>> getItems() async {
+    final data = await FirebaseFirestore.instance.collection('postos').get();
+
+    final docs = data.docs;
+
     final List<Station> stations = [];
 
-    final String file = await rootBundle.loadString('lib/assets/data.json');
+    for (var station in docs) {
+      stations.add(Station.fromJson(station.data(), station.id));
+    }
 
-    final dynamic data = await json.decode(file);
-
-    data['stations'].forEach(
-      (station) => {stations.add(Station.fromJson(station))},
-    );
+    print(stations);
 
     return stations;
   }

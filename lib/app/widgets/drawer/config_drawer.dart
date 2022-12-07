@@ -11,16 +11,16 @@ class ConfigDrawer extends StatelessWidget {
       ),
       child: Text('Configurações'),
     ),
-    ConfigOption(
-        label: "Notificações",
-        color: Colors.black,
-        icon: Icons.chat_bubble_outlined,
-        onTap: () => Modular.to.pop()),
-    ConfigOption(
-        label: 'GPS',
-        color: Colors.black,
-        icon: Icons.gps_fixed_outlined,
-        onTap: () => Modular.to.pop()),
+    // ConfigOption(
+    //     label: "Notificações",
+    //     color: Colors.black,
+    //     icon: Icons.chat_bubble_outlined,
+    //     onTap: () => Modular.to.pop()),
+    // ConfigOption(
+    //     label: 'GPS',
+    //     color: Colors.black,
+    //     icon: Icons.gps_fixed_outlined,
+    //     onTap: () => Modular.to.pop()),
     ConfigOption(
         label: 'Sobre',
         color: Colors.black,

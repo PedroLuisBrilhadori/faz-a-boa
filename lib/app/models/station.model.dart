@@ -29,15 +29,15 @@ class Station {
     required this.distance,
   });
 
-  factory Station.fromJson(Map<String, dynamic> json) {
+  factory Station.fromJson(Map<String, dynamic> json, id) {
     double toDouble(number) {
       if (number is double) return number;
 
-      return number.toDouble();
+      return double.parse(number);
     }
 
     return Station(
-      id: json['id'],
+      id: id,
       name: json['name'],
       address: json['address'],
       image: json['image'],
