@@ -9,16 +9,26 @@ class PhotoRateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.fromLTRB(10, 10, 10, 6),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: 65,
-                child: Image.asset(image),
-              ),
-              StarsRate(rate),
-            ]));
+      margin: const EdgeInsets.fromLTRB(10, 10, 10, 6),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            height: 65,
+            child: imageSource(image),
+          ),
+          StarsRate(rate),
+        ],
+      ),
+    );
+  }
+
+  imageSource(String image) {
+    if (image.contains('lib/assets')) {
+      return Image.asset(image);
+    }
+
+    return Image.network(image);
   }
 }
 

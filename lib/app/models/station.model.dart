@@ -29,15 +29,16 @@ class Station {
     required this.distance,
   });
 
-  factory Station.fromJson(Map<String, dynamic> json) {
+  factory Station.fromJson(Map<String, dynamic> json, id) {
     double toDouble(number) {
       if (number is double) return number;
+      if (number is int) return number.toDouble();
 
-      return number.toDouble();
+      return double.parse(number);
     }
 
     return Station(
-      id: json['id'],
+      id: id,
       name: json['name'],
       address: json['address'],
       image: json['image'],
@@ -47,4 +48,24 @@ class Station {
       fuels: json['fuels'],
     );
   }
+}
+
+class CreateStation {
+  String name;
+  double rate;
+  String image;
+  String cover;
+  String address;
+  double distance;
+  List<dynamic> fuels;
+
+  CreateStation({
+    required this.name,
+    required this.rate,
+    required this.fuels,
+    required this.cover,
+    required this.image,
+    required this.address,
+    required this.distance,
+  });
 }

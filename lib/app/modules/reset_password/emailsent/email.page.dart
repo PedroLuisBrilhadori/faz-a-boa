@@ -17,17 +17,14 @@ class _EmailScreenState extends State<EmailScreen> {
   Widget build(BuildContext context) {
     return ScaffoldBase(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 50),
+        padding: const EdgeInsets.only(left: 20, right: 0, bottom: 50, top: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-              child: header(
-                title: 'Email Enviado',
-                subTitle:
-                    'Um email de confirmação para redefinir sua senha foi enviado! Confira sua caixa de entrada.',
-              ),
+            header(
+              title: 'Email Enviado',
+              subTitle: 'Um email para redefinir sua senha foi enviado!',
             ),
 
             //MAIL IMAGE
@@ -45,8 +42,7 @@ class _EmailScreenState extends State<EmailScreen> {
                 loginButton(
                     label: 'OK',
                     context: context,
-                    onPressed: () =>
-                        {Modular.to.navigate('/reset-password/reset')}),
+                    onPressed: () => {Modular.to.navigate('/')}),
               ],
             ),
           ],

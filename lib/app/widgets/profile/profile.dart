@@ -28,16 +28,33 @@ class ProfilePhotos extends StatelessWidget {
 
   Widget avatarImage() => CircleAvatar(
         radius: profileHeight / 2,
-        backgroundImage: AssetImage(image),
+        backgroundImage: imageSource(image),
       );
 
-  Widget coverImage() => Container(
-        color: Colors.grey,
-        child: Image.asset(
-          cover,
-          width: double.infinity,
-          height: coverHeight,
-          fit: BoxFit.cover,
-        ),
+  imageSource(String image) {
+    if (image.contains('lib/assets')) return AssetImage(image);
+
+    return NetworkImage(image);
+  }
+
+  coverSource(String image) {
+    if (image.contains('lib/assets')) {
+      return Image.asset(
+        image,
+        width: double.infinity,
+        height: coverHeight,
+        fit: BoxFit.cover,
       );
+    }
+
+    return Image.network(
+      image,
+      width: double.infinity,
+      height: coverHeight,
+      fit: BoxFit.cover,
+    );
+  }
+
+  Widget coverImage() =>
+      Container(color: Colors.grey, child: coverSource(cover));
 }

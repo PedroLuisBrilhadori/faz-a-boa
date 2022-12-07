@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
+import 'package:faz_a_boa/app/services/firebase.service.dart';
+import 'package:faz_a_boa/app/validators/email.validator.dart';
+import 'package:faz_a_boa/app/validators/pass.validator.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:faz_a_boa/app/modules/login/components.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,8 +16,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var login = TextEditingController();
-  var password = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  final GlobalKey<FormState> key = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +41,30 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 60.0),
-                FzTextField(
-                    label: 'Email',
-                    controller: login,
-                    textInputType: TextInputType.emailAddress),
-                const SizedBox(height: 5.0),
-                FzTextField(
-                    label: 'Senha',
-                    controller: password,
-                    textInputType: TextInputType.text),
-                const SizedBox(height: 10.0),
+                Form(
+                  key: key,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 60.0),
+                      FzTextField(
+                        label: 'Email',
+                        controller: emailController,
+                        textInputType: TextInputType.emailAddress,
+                        validator: (value) => emailValidator(value),
+                      ),
+                      const SizedBox(height: 5.0),
+                      FzTextField(
+                        label: 'Senha',
+                        controller: passwordController,
+                        textInputType: TextInputType.text,
+                        passwordField: true,
+                        validator: (value) => passValidator(value),
+                      ),
+                      const SizedBox(height: 10.0),
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +84,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 loginButton(
                   label: 'Confirmar',
                   context: context,
-                  onPressed: () => Modular.to.navigate('/home'),
+                  onPressed: () {
+                    if (!key.currentState!.validate()) {
+                      return;
+                    }
+
+                    String email = emailController.text;
+                    String password = passwordController.text;
+
+                    FirebaseService().login(email: email, password: password);
+                  },
                 ),
               ],
             ),
@@ -78,24 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 60.0),
-                Text(
-                  'Ou continue com:',
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
-                ),
-                const SizedBox(
-                  height: 7.0,
-                ),
-                connectWithButton(
-                  button: Buttons.FacebookNew,
-                  label: 'Facebook',
-                  onPressed: () => Modular.to.navigate('/home'),
-                ),
-                connectWithButton(
-                  button: Buttons.Google,
-                  label: 'Google',
-                  onPressed: () => Modular.to.navigate('/home'),
-                ),
-                const SizedBox(height: 15.0),
                 RichText(
                   text: TextSpan(
                     style: TextStyle(

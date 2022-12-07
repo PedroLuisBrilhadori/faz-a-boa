@@ -1,25 +1,25 @@
+import 'package:faz_a_boa/app/modules/add_station/add_station.utils.dart';
+import 'package:faz_a_boa/app/services/stations.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:faz_a_boa/app/services/firebase.service.dart';
-import 'package:faz_a_boa/app/modules/registration/pages.dart';
+import 'package:faz_a_boa/app/modules/add_station/pages.dart';
 import 'package:faz_a_boa/app/widgets/text-field/models/text_field.model.dart';
 import 'package:faz_a_boa/app/widgets/text-field/text_field.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({super.key});
+class AddStationScreen extends StatefulWidget {
+  const AddStationScreen({super.key});
 
   @override
-  State<RegistrationScreen> createState() => RegistrationScreenState();
+  State<AddStationScreen> createState() => AddStationnState();
 }
 
-class RegistrationScreenState extends State<RegistrationScreen> {
-  bool stationOwner = false;
+class AddStationnState extends State<AddStationScreen> {
+  PageModel page = addStationPage;
 
   @override
   Widget build(BuildContext context) {
-    PageModel page = stationOwner ? registrationOwnerPage : registrationPage;
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
@@ -34,26 +34,6 @@ class RegistrationScreenState extends State<RegistrationScreen> {
 
                 const SizedBox(height: 15),
 
-                Row(
-                  children: [
-                    const Text(
-                      'Proprietário de posto?',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Switch(
-                      value: stationOwner,
-                      onChanged: (value) {
-                        setState(() {
-                          stationOwner = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-
                 fields(fields: page.fields, key: page.key),
                 //BUTTONS
                 Column(
@@ -65,27 +45,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                       color: Colors.green,
                       onPressed: () {
                         if (page.key.currentState!.validate()) {
-                          String name = page.fields[0].controller.text;
-                          String email = page.fields[1].controller.text;
-                          String password = page.fields[2].controller.text;
-                          String identifier = page.fields[3].controller.text;
-
-                          if (!stationOwner) {
-                            FirebaseService().createAccount(
-                              email: email,
-                              password: password,
-                              name: name,
-                              cpf: identifier,
-                            );
-                            return;
-                          }
-
-                          FirebaseService().createAccount(
-                            email: email,
-                            password: password,
-                            name: name,
-                            cnpj: identifier,
-                          );
+                          StationService().addStation(createStation(page));
                         }
                       },
                     ),
@@ -93,7 +53,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                     Button(
                       label: 'Voltar',
                       color: Colors.red,
-                      onPressed: () => {Modular.to.navigate('/')},
+                      onPressed: () => {Modular.to.navigate('/home')},
                     )
                   ],
                 ),
