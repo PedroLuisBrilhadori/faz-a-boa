@@ -11,11 +11,11 @@ class ConfigDrawer extends StatelessWidget {
       ),
       child: Text('Configurações'),
     ),
-    // ConfigOption(
-    //     label: "Notificações",
-    //     color: Colors.black,
-    //     icon: Icons.chat_bubble_outlined,
-    //     onTap: () => Modular.to.pop()),
+    ConfigOption(
+        label: "Adicionar Posto",
+        color: Colors.black,
+        icon: Icons.add_outlined,
+        onTap: () => Modular.to.navigate('/add-station')),
     // ConfigOption(
     //     label: 'GPS',
     //     color: Colors.black,

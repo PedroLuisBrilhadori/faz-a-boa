@@ -48,3 +48,23 @@ class Station {
     );
   }
 }
+
+class CreateStation {
+  String name;
+  double rate;
+  String image;
+  String cover;
+  String address;
+  double distance;
+  List<dynamic> fuels;
+
+  CreateStation({
+    required this.name,
+    required this.rate,
+    required this.fuels,
+    required this.cover,
+    required this.image,
+    required this.address,
+    required this.distance,
+  });
+}

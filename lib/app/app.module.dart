@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:faz_a_boa/app/modules/about/about.module.dart';
+import 'package:faz_a_boa/app/modules/add_station/add_station.module.dart';
 import 'package:faz_a_boa/app/modules/station/station.module.dart';
 import 'package:faz_a_boa/app/modules/login/login.module.dart';
 import 'package:faz_a_boa/app/modules/reset_password/reset_passoword.module.dart';
@@ -20,5 +21,6 @@ class AppModule extends Module {
     ModuleRoute('/registration', module: RegistrationModule()),
     ModuleRoute('/reset-password', module: ResetPasswordModule()),
     ModuleRoute('/about', module: AboutModule()),
+    ModuleRoute('/add-station', module: AddStationModule()),
   ];
 }

@@ -50,7 +50,7 @@ class StationsPrices extends StatelessWidget {
 
   stringToFuel(String stringFuel) {
     final name = stringFuel.split(' - ').first;
-    final price = stringFuel.split(' - ').last;
+    final price = stringFuel.split(' - ').last.replaceFirst(',', '.');
 
     return Fuel(name: name, price: double.parse(price));
   }
